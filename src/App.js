@@ -1,28 +1,61 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+// import logo from './logo.svg';
+import './App.css'
+import BooksBody from './components/BooksBody'
+import NavBar from './components/NavBar'
+
+
 
 class App extends Component {
+
+
+  constructor() {
+    super()
+    this.state = {
+      fetchedBooks: [],
+      searchInput: ''
+    }
+  }
+
+  componentDidMount() {
+    this.fetchBooks()
+  }
+
+  captureInput = (input) => {
+    this.setState({
+      searchInput: input
+    }, () => {
+      console.log(this.state.searchInput)
+    })
+  }
+
+
+
+  fetchBooks = () => {
+    fetch('https://www.googleapis.com/books/v1/volumes?q=lord+inauthor:tolkien&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs')
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({
+        fetchedBooks: json.items
+      }, () => {
+        // console.log(this.state)
+      })
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <img src='http://www.tolkienlibrary.com/press/images/deluxe-pocket-boxed-set2.jpg' className="App-logo" alt="logo" />
+        <NavBar
+        captureInput={this.captureInput}
+        />
+        <BooksBody  fetchedBooks={this.state.fetchedBooks}
+        searchInput={this.state.searchInput} />
       </div>
     );
   }
 }
 
-export default App;
+export default App

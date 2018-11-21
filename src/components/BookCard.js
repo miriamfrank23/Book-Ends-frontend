@@ -1,0 +1,31 @@
+import React from 'react';
+
+
+const BookCard = ({ book }) => {
+
+
+  const printOutAuthors = () => {
+    return book.volumeInfo.authors.map(author => {
+      return <div key={author}> {author} </div>
+    })
+  }
+
+
+  // console.log(book)
+    return (
+      <React.Fragment>
+        <div className='bookCard'>
+          {book.volumeInfo.imageLinks ?
+          <img src={book.volumeInfo.imageLinks.thumbnail} alt='' className='indexImages'/>
+          : 'No image available'
+          }
+          <br/>
+          {book.volumeInfo.title} <br/>
+          Author/s:{printOutAuthors()}
+          Average rating: {book.volumeInfo.averageRating}
+        </div>
+      </React.Fragment>
+    )
+}
+
+export default BookCard;
