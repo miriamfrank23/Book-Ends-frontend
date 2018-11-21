@@ -16,8 +16,11 @@ const BookCard = ({ book }) => {
       <React.Fragment>
         <div className='bookCard'>
           {book.volumeInfo.imageLinks ?
-          <img src={book.volumeInfo.imageLinks.thumbnail} alt='' className='indexImages'/>
-          : 'No image available'
+          <img  src={book.volumeInfo.imageLinks.thumbnail} alt=''
+          className='bookThumbnail'/>
+          :
+          <img  src={'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'} alt=''
+            className='bookThumbnail'/>
           }
           <br/>
           {book.volumeInfo.title} <br/>

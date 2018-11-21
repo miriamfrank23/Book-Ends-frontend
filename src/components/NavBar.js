@@ -5,10 +5,13 @@ const NavBar = ({ captureInput }) => {
 
 
     return (
-      <div>
-      <SearchBar
-        captureInput={captureInput}
-      />
+      <div className='navBar'>
+        <img src='http://www.tolkienlibrary.com/press/images/deluxe-pocket-boxed-set2.jpg' className="App-logo" alt="logo" />
+        <br/>
+        <SearchBar
+          captureInput={captureInput}
+        />
+
       </div>
     )
 

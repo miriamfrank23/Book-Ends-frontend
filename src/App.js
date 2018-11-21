@@ -47,7 +47,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <img src='http://www.tolkienlibrary.com/press/images/deluxe-pocket-boxed-set2.jpg' className="App-logo" alt="logo" />
         <NavBar
         captureInput={this.captureInput}
         />
