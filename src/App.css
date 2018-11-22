@@ -1,13 +1,17 @@
 .App {
-  background-color: #e1e8f0;
+
 }
 
-.App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  height: 20vmin;
-  border-radius: 2px;
+#logo {
+  padding-bottom: 70px;
+  padding-left: 20px;
+  font-size: 40px;
 }
 
+#logo:hover {
+  /* color: #e1e8f0; */
+  color: white;
+}
 
 .booksBody {
   justify-content: center;
@@ -38,15 +42,22 @@
 
 .navBar {
   display: flex;
-  justify-content: center;
-  background-color: #3a4660;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #e1e8f0; */
+  /* background:#676470; */
+  background:#88B7B5;
+  height: 150px;
+  opacity: .80;
 }
 
 .BookShow {
   margin: 50px;
   display: flex;
   justify-content: space-around;
-  background-color: #e1e8f0;
+  /* background-color: #e1e8f0; */
+  /* background:#676470; */
+  background:#88B7B5;
 }
 
 .showImage {
@@ -61,8 +72,10 @@ input {
   width: 400px;
   height: 25px;
   margin: 10px;
-  background-color: #e1e8f0;
+  /* background-color: #e1e8f0; */
+  background-color: white;
   font-family: 'Roboto', sans-serif;
+  font-size: 14px;
 }
 
 #navBarButton {
@@ -87,6 +100,12 @@ button {
   flex-direction: column;
   justify-content: center;
 }
+
+.profileIcon:hover {
+  /* color: #e1e8f0; */
+  color: white;
+}
+
 
 .profileImage {
   height: 100px;
