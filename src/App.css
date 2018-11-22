@@ -1,9 +1,11 @@
 .App {
+  background-color: #e1e8f0;
 }
 
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
-  height: 40vmin;
+  height: 20vmin;
+  border-radius: 2px;
 }
 
 
@@ -20,7 +22,11 @@
   margin: 10px;
   padding: 10px;
   border-radius: 2px;
-  border: solid lightpink;
+}
+
+.bookThumbnail:hover {
+  width: 175px;
+  height: 225px;
 }
 
 .bookThumbnail {
@@ -29,9 +35,25 @@
   height: 200px;
 }
 
+
 .navBar {
   display: flex;
   justify-content: center;
+  background-color: #3a4660;
+}
+
+.BookShow {
+  margin: 50px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #e1e8f0;
+}
+
+.showImage {
+  border-radius: 2px;
+  width: 300px;
+  height: 360px;
+  padding: 20px;
 }
 
 input {
@@ -39,4 +61,37 @@ input {
   width: 400px;
   height: 25px;
   margin: 10px;
+  background-color: #e1e8f0;
+  font-family: 'Roboto', sans-serif;
+}
+
+#navBarButton {
+  border-radius: 2px;
+  margin-top: 30px;
+  margin-left: 30px;
+  height: 30px;
+  width: 200px;
+}
+
+button {
+  border-radius: 2px;
+  margin: 20px;
+  width: 200px;
+  height: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.profileIcon {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profileImage {
+  height: 100px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Fjalla One', serif;
 }

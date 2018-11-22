@@ -1,12 +1,13 @@
 import React from 'react'
 import BookCard from './BookCard'
 
-const BooksBody = ({ fetchedBooks, searchInput }) => {
+const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
 
   const mapThroughBooks = () => {
     return filterThroughBooks().map(book => {
       // console.log(book)
       return <BookCard
+        setCurrentBook={setCurrentBook}
         book={book}
         key={book.id}
       />
@@ -17,6 +18,9 @@ const BooksBody = ({ fetchedBooks, searchInput }) => {
     return fetchedBooks.filter(book => {
       return (
         book.volumeInfo.title.toLowerCase().includes(searchInput.toLowerCase())
+        ||
+          book.volumeInfo.description.toLowerCase().includes(searchInput.toLowerCase())
+        // need to update filter
       // ||
       //   book.volumeInfo.authors.forEach(author => author.toLowerCase().includes(searchInput.toLowerCase())
       //   )

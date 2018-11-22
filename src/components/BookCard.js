@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, setCurrentBook }) => {
 
 
   const printOutAuthors = () => {
@@ -14,7 +14,7 @@ const BookCard = ({ book }) => {
   // console.log(book)
     return (
       <React.Fragment>
-        <div className='bookCard'>
+        <div className='bookCard' onClick={() => setCurrentBook(book.id)}>
           {book.volumeInfo.imageLinks ?
           <img  src={book.volumeInfo.imageLinks.thumbnail} alt=''
           className='bookThumbnail'/>
