@@ -53,37 +53,37 @@ class App extends Component {
     })
   }
 
- // google books
-  // fetchBooks = () => {
-  //   //only include books with ratings?
-  //   fetch('https://www.googleapis.com/books/v1/volumes?q=subject:mystery&subject:thriller&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs')
-  //     .then(resp => resp.json())
-  //   .then(json => {
-  //     this.setState({
-  //       fetchedBooks: json.items
-  //     }, () => {
-  //       console.log(this.state)
-  //     })
-  //   })
-  // }
-
+ 
   fetchBooks = () => {
-    const booksArray = []
     //only include books with ratings?
-    // for (let i = 0; i <= 80; i += 40) {
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs`)
+    fetch('https://www.googleapis.com/books/v1/volumes?q=subject:mystery&subject:thriller&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs')
       .then(resp => resp.json())
-      .then(console.log)
-      // .then(json => {
-      //   this.setState({
-      //     fetchedBooks: json
-      //   }, () => {
-      //     console.log(this.state)
-      //   })
-      // })
-    // }
-    console.log(booksArray);
+    .then(json => {
+      this.setState({
+        fetchedBooks: json.items
+      }, () => {
+        console.log(this.state)
+      })
+    })
   }
+
+  // fetchBooks = () => {
+  //   const booksArray = []
+  //   //only include books with ratings?
+  //   // for (let i = 0; i <= 80; i += 40) {
+  //     fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs`)
+  //     .then(resp => resp.json())
+  //     .then(console.log)
+  //     // .then(json => {
+  //     //   this.setState({
+  //     //     fetchedBooks: json
+  //     //   }, () => {
+  //     //     console.log(this.state)
+  //     //   })
+  //     // })
+  //   // }
+  //   console.log(booksArray);
+  // }
 
 
   render() {

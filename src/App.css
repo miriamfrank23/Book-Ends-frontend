@@ -26,6 +26,7 @@
   margin: 10px;
   padding: 10px;
   border-radius: 2px;
+  color: white;
 }
 
 .bookThumbnail:hover {
@@ -52,12 +53,15 @@
 }
 
 .BookShow {
+  border-radius: 2px;
   margin: 50px;
+  padding: 20px;
   display: flex;
   justify-content: space-around;
   /* background-color: #e1e8f0; */
   /* background:#676470; */
   background:#88B7B5;
+  opacity: .80;
 }
 
 .showImage {
@@ -92,6 +96,7 @@ button {
   width: 200px;
   height: 30px;
   font-family: 'Roboto', sans-serif;
+  font-size: 12px;
 }
 
 .profileIcon {
