@@ -1,5 +1,4 @@
 .App {
-
 }
 
 #logo {
@@ -46,7 +45,8 @@
   align-items: center;
   /* background-color: #e1e8f0; */
   /* background:#676470; */
-  background:#88B7B5;
+  /* background:#88B7B5; */
+  background: white;
   height: 150px;
   opacity: .80;
 }
@@ -59,7 +59,8 @@
   /* justify-content: space-around;    */
   /* background-color: #e1e8f0; */
   /* background:#676470; */
-  background:#88B7B5;
+  /* background:#88B7B5; */
+  background: white;
   opacity: .80;
 }
 

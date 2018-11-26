@@ -8,10 +8,7 @@ body {
   /* background-color: #e1e8f0; */
   /* background:#676470; */
   /* background:#88B7B5; */
-}
-
-
-#stretch {
+  background: white;
   background-image: url('https://c1.staticflickr.com/6/5524/30628679132_ca19d26013_b.jpg');
   -moz-background-size: 100%;
    -o-background-size: 100%;
@@ -19,4 +16,9 @@ body {
    background-size: 100%;
    background-repeat: no-repeat;
    background-attachment: fixed;
+}
+
+
+#stretch {
+
 }
