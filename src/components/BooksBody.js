@@ -24,7 +24,8 @@ const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
       // ||
       //   book.volumeInfo.authors.forEach(author => author.toLowerCase().includes(searchInput.toLowerCase())
       //   )
-      // need to update filter
+      ||
+        book.volumeInfo.authors[0].toLowerCase().includes(searchInput.toLowerCase())
       )
     })
   }

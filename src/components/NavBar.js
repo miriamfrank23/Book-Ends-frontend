@@ -3,7 +3,7 @@ import SearchBar from './SearchBar'
 
 // {*<img src='https://vignette.wikia.nocookie.net/harrypotter/images/d/d4/LibraryPottermore.png/revision/latest?cb=20160530005252' className="App-logo" alt="logo" />
 // *}
-const NavBar = ({ captureInput, currentBookId, noBookSelected }) => {
+const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput }) => {
 
 
     return (
@@ -18,6 +18,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected }) => {
           </button> :
           <SearchBar
             captureInput={captureInput}
+            searchInput={searchInput}
           />
         }
         <div className='profileIcon'>

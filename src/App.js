@@ -17,10 +17,14 @@ class App extends Component {
       searchInput: '',
       currentBookId: null
     }
+    console.log('clearing search input');
   }
 
   componentDidMount() {
     this.fetchBooks()
+    // this.setState({
+    //   searchInput: ''
+    // })
   }
 
   setCurrentBook = (id) => {
@@ -35,7 +39,7 @@ class App extends Component {
     this.setState({
       currentBookId: null
     }, () => {
-      console.log(this.state.currentBookId);
+      console.log(this.state.currentBookId)
     })
   }
 
@@ -43,7 +47,7 @@ class App extends Component {
     this.setState({
       searchInput: input
     }, () => {
-      console.log(this.state.searchInput)
+      // console.log(this.state.searchInput)
     })
   }
 
@@ -53,10 +57,10 @@ class App extends Component {
     })
   }
 
- 
+
   fetchBooks = () => {
     //only include books with ratings?
-    fetch('https://www.googleapis.com/books/v1/volumes?q=subject:mystery&subject:thriller&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs')
+    fetch('https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs')
       .then(resp => resp.json())
     .then(json => {
       this.setState({
@@ -93,6 +97,7 @@ class App extends Component {
         captureInput={this.captureInput}
         currentBookId={this.state.currentBookId}
         noBookSelected={this.noBookSelected}
+        searchInput={this.state.searchInput}
         />
         {!this.state.currentBookId ? <BooksBody
         setCurrentBook={this.setCurrentBook}
