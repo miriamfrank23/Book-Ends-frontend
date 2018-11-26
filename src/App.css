@@ -1,3 +1,4 @@
+
 .App {
 }
 
@@ -72,9 +73,6 @@
 }
 
 .showImage:hover {
-  /* border-radius: 2px;
-  width: 210px;
-  height: 280px; */
   transform: scale(1.5);
 }
 
@@ -85,7 +83,8 @@ input {
   margin: 10px;
   /* background-color: #e1e8f0; */
   background-color: white;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Didact Gothic', sans-serif;   */
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
 }
 
@@ -102,7 +101,9 @@ button {
   margin: 20px;
   width: 200px;
   height: 30px;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Didact Gothic', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   font-size: 12px;
 }
 
@@ -124,5 +125,7 @@ button {
 }
 
 h1, h2, h3, h4, h5, h6 {
- font-family: 'Fjalla One', serif;
+ /* font-family: 'Fjalla One', serif; */
+ font-family: 'Montserrat', sans-serif;
+ font-weight: bold;
 }

@@ -5,7 +5,7 @@ const Comment = ({ allComments }) => {
 
   const showAllComments = () => {
     return allComments.map(comment => {
-      return <div key={comment.id}> {comment.text} </div>
+      return <div key={comment.id}> This will be user who posted: {comment.text} </div>
     })
   }
 

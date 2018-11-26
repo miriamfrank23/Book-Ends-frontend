@@ -9,7 +9,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput }) =>
     return (
       <div className='navBar'>
       <h1 id='logo'>
-        Books
+        Shitty Books 
       </h1>
         {currentBookId ?
           <button id='navBarButton'

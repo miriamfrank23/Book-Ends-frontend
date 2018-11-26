@@ -3,7 +3,8 @@ import './App.css'
 import BooksBody from './components/BooksBody'
 import NavBar from './components/NavBar'
 import BookShow from './components/BookShow'
-
+import UserProfile from './components/UserProfile'
+import { Pagination } from 'semantic-ui-react'
 
 
 class App extends Component {
@@ -14,7 +15,10 @@ class App extends Component {
     this.state = {
       fetchedBooks: [],
       searchInput: '',
-      currentBookId: null
+      currentBookId: null,
+      loading: true,
+      page: null,
+      pages: null
     }
   }
 
@@ -28,7 +32,10 @@ class App extends Component {
     .then(resp => resp.json())
     .then(json => {
       this.setState({
-        fetchedBooks: json
+        fetchedBooks: json.books,
+        loading: false,
+        page: json.page,
+        pages: json.pages
       }, () => {
         console.log(this.state);
       })
@@ -65,6 +72,9 @@ class App extends Component {
     })
   }
 
+  handlePage = (e, { activePage }) => {
+    debugger
+  }
 
 
   render() {
@@ -84,10 +94,13 @@ class App extends Component {
           <BookShow
           findCurrentBook={this.findCurrentBook}
           />
-          }
+        }
         </div>
     )
   }
 }
+// <Pagination onPageChange={this.handlePage} size='mini' siblingRange='6' defaultActivePage={this.state.page}
+// totalPages={this.state.pages}/>
+
 
 export default App

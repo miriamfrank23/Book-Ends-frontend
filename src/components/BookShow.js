@@ -78,9 +78,12 @@ class BookShow extends Component {
         <div>
         Title: {findCurrentBook().title}<br/><br/>
         Description: {findCurrentBook().description}<br/>
-        Page count: {findCurrentBook().page_count}
+        Page count: {findCurrentBook().page_count}<br/>
         <button>
         I read this book
+        </button>
+        <button>
+        I want to read this book
         </button><br/>
         Leave a comment:
         <input
