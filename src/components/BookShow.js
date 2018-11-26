@@ -6,17 +6,17 @@ const BookShow = ({ findCurrentBook }) => {
 
     return (
       <div className='BookShow'>
-      {findCurrentBook().volumeInfo.imageLinks ?
-        <img src={findCurrentBook().volumeInfo.imageLinks.thumbnail} alt=''
+      {findCurrentBook().thumbnail ?
+        <img src={findCurrentBook().thumbnail} alt=''
         className='showImage'/>
         :
         <img  src={'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'} alt=''
         className='showImage'/>
       }
         <div>
-          Title: {findCurrentBook().volumeInfo.title}<br/><br/>
-          Description: {findCurrentBook().volumeInfo.description}<br/>
-          Page count: {findCurrentBook().volumeInfo.pageCount}
+          Title: {findCurrentBook().title}<br/><br/>
+          Description: {findCurrentBook().description}<br/>
+          Page count: {findCurrentBook().page_count}
             <button>
             I read this book
             </button><br/>

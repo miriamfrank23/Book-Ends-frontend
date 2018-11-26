@@ -17,14 +17,23 @@ class App extends Component {
       searchInput: '',
       currentBookId: null
     }
-    console.log('clearing search input');
   }
 
   componentDidMount() {
     this.fetchBooks()
-    // this.setState({
-    //   searchInput: ''
-    // })
+  }
+
+  fetchBooks = () => {
+    //only include books with ratings? and author and description? change database to only include
+    fetch('http://localhost:4000/api/v1/books')
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({
+        fetchedBooks: json
+      }, () => {
+        console.log(this.state);
+      })
+    })
   }
 
   setCurrentBook = (id) => {
@@ -58,37 +67,6 @@ class App extends Component {
   }
 
 
-  fetchBooks = () => {
-    //only include books with ratings?
-    fetch('https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs')
-      .then(resp => resp.json())
-    .then(json => {
-      this.setState({
-        fetchedBooks: json.items
-      }, () => {
-        console.log(this.state)
-      })
-    })
-  }
-
-  // fetchBooks = () => {
-  //   const booksArray = []
-  //   //only include books with ratings?
-  //   // for (let i = 0; i <= 80; i += 40) {
-  //     fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:mystery&maxResults=40&langRestrict=en&key=AIzaSyBYNWrl0SYXUnucBkyzuia9nVTRDDUzdbs`)
-  //     .then(resp => resp.json())
-  //     .then(console.log)
-  //     // .then(json => {
-  //     //   this.setState({
-  //     //     fetchedBooks: json
-  //     //   }, () => {
-  //     //     console.log(this.state)
-  //     //   })
-  //     // })
-  //   // }
-  //   console.log(booksArray);
-  // }
-
 
   render() {
     return (
@@ -100,16 +78,16 @@ class App extends Component {
         searchInput={this.state.searchInput}
         />
         {!this.state.currentBookId ? <BooksBody
-        setCurrentBook={this.setCurrentBook}
-        fetchedBooks={this.state.fetchedBooks}
-        searchInput={this.state.searchInput} />
-        :
-        <BookShow
-        findCurrentBook={this.findCurrentBook}
-        />
-        }
-      </div>
-    );
+          setCurrentBook={this.setCurrentBook}
+          fetchedBooks={this.state.fetchedBooks}
+          searchInput={this.state.searchInput} />
+          :
+          <BookShow
+          findCurrentBook={this.findCurrentBook}
+          />
+          }
+        </div>
+    )
   }
 }
 
