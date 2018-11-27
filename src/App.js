@@ -73,7 +73,18 @@ class App extends Component {
   }
 
   handlePage = (e, { activePage }) => {
-    debugger
+    this.setState({
+      loading: true
+    })
+    fetch(`http://localhost:4000/api/v1/books/?page=${activePage}`)
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({
+        loading: false,
+        fetchedBooks: json.books,
+        page: json.page
+      })
+    })
   }
 
 
@@ -86,6 +97,8 @@ class App extends Component {
         noBookSelected={this.noBookSelected}
         searchInput={this.state.searchInput}
         />
+        <Pagination onPageChange={this.handlePage} size='mini' activePage={this.state.page}
+        totalPages={this.state.pages}/>
         {!this.state.currentBookId ? <BooksBody
           setCurrentBook={this.setCurrentBook}
           fetchedBooks={this.state.fetchedBooks}
@@ -99,8 +112,6 @@ class App extends Component {
     )
   }
 }
-// <Pagination onPageChange={this.handlePage} size='mini' siblingRange='6' defaultActivePage={this.state.page}
-// totalPages={this.state.pages}/>
 
 
 export default App
