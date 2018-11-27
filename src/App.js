@@ -100,14 +100,14 @@ class App extends Component {
 
 
         {!this.state.currentBookId ?
-          <React.Fragment>
-          <Pagination onPageChange={this.handlePage} size='mini' defaultActivePage={this.state.page}
+          <div className='pageBody'>
+          <Pagination onPageChange={this.handlePage} defaultActivePage={this.state.page}
           totalPages={this.state.pages}/>
           <BooksBody
           setCurrentBook={this.setCurrentBook}
           fetchedBooks={this.state.fetchedBooks}
           searchInput={this.state.searchInput} />
-          </React.Fragment>
+          </div>
           :
           <BookShow
           findCurrentBook={this.findCurrentBook}

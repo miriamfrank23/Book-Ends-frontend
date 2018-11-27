@@ -74,7 +74,8 @@ class BookShow extends Component {
     const { findCurrentBook } = this.props
     console.log(this.state.allComments)
     return (
-      <div className='BookShow'>
+      <div className='bookShow'>
+      <div className='bookDetails'>
         {findCurrentBook().thumbnail ?
           <img src={findCurrentBook().thumbnail} alt=''
           className='showImage'/>
@@ -84,11 +85,12 @@ class BookShow extends Component {
         }
         <div>
         Title: <br/>{findCurrentBook().title}<br/><br/>
-        Written by: {this.printOutAuthors()}<br/><br/>
+        Written by: {this.printOutAuthors()}<br/>
         Description: <br/>{findCurrentBook().description}<br/><br/>
         Publisher: <br/>{findCurrentBook().publisher}<br/><br/>
         Date published: <br/>{findCurrentBook().date_published}<br/><br/>
         Page count: <br/>{findCurrentBook().page_count}<br/>
+        </div>
         <button>
         I read this book
         </button>
@@ -104,7 +106,9 @@ class BookShow extends Component {
         Submit
         </button>
         </div>
-        <Comment allComments={this.state.allComments}/>
+        <div className='commentContainer'>
+          <Comment allComments={this.state.allComments}/>
+        </div>
       </div>
     )
   }

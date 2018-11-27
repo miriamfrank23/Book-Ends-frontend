@@ -9,11 +9,17 @@
 }
 
 #logo:hover {
-  /* color: #e1e8f0; */
   color: white;
 }
 
 .booksBody {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pageBody {
+  margin: 20px;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
@@ -27,6 +33,7 @@
   padding: 10px;
   border-radius: 2px;
   color: white;
+  font-style: italic;
 }
 
 .bookThumbnail:hover {
@@ -35,8 +42,8 @@
 
 .bookThumbnail {
   border-radius: 2px;
-  width: 150px;
-  height: 200px;
+  width: 180px;
+  height: 240px;
 }
 
 
@@ -44,32 +51,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #e1e8f0; */
-  /* background:#676470; */
-  /* background:#88B7B5; */
   background: white;
   height: 150px;
-  opacity: .80;
+  /* opacity: .80; */
 }
 
-.BookShow {
+.bookShow {
   border-radius: 2px;
   margin: 50px;
   padding: 20px;
   /* display: flex; */
   /* justify-content: space-around;    */
-  /* background-color: #e1e8f0; */
-  /* background:#676470; */
-  /* background:#88B7B5; */
   background: white;
   opacity: .80;
 }
 
 .showImage {
   border-radius: 2px;
-  width: 150px;
-  height: 200px;
-  padding: 20px;
+  width: 180px;
+  height: 240px;
+  margin: 20px;
 }
 
 .showImage:hover {
@@ -101,7 +102,6 @@ button {
   margin: 20px;
   width: 200px;
   height: 30px;
-  /* font-family: 'Didact Gothic', sans-serif; */
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   font-size: 12px;
@@ -115,13 +115,31 @@ button {
 }
 
 .profileIcon:hover {
-  /* color: #e1e8f0; */
   color: white;
 }
 
-
 .profileImage {
   height: 100px;
+}
+
+.commentContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.comment {
+  border-radius: 2px;
+  border: solid 1px;
+  margin: 5px;
+  padding: 5px;
+  width: 500px;
+  font-style: italic;
+}
+
+.bookDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1, h2, h3, h4, h5, h6 {

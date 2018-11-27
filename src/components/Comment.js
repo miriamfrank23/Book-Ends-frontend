@@ -5,7 +5,10 @@ const Comment = ({ allComments }) => {
 
   const showAllComments = () => {
     return allComments.map(comment => {
-      return <div key={comment.id}> This will be user who posted: {comment.text} </div>
+      return <div className='comment' key={comment.id}> This will be user who posted: {comment.text}
+      <br/><button> Edit </button>
+      <button> Delete </button>
+      </div>
     })
   }
 
