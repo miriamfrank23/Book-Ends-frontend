@@ -123,18 +123,20 @@ class App extends Component {
   pageRender = () => {
     if (!this.state.currentBookId && this.state.bookStart && (this.state.bookEnd !== this.state.fetchedBooks.length)) {
       return <div className='pageBody'>
-      <button onClick={this.firstPage}>
-      First page
-      </button>
-      <button onClick={this.previousPage}>
-      Previous Page
-      </button>
-      <button onClick={this.nextPage}>
-      Next Page
-      </button>
-      <button onClick={this.lastPage}>
-      Last page
-      </button>
+      <div className='pageButtons'>
+        <button onClick={this.firstPage}>
+        First page
+        </button>
+        <button onClick={this.previousPage}>
+        Previous Page
+        </button>
+        <button onClick={this.nextPage}>
+        Next Page
+        </button>
+        <button onClick={this.lastPage}>
+        Last page
+        </button>
+      </div>
       <BooksBody
       setCurrentBook={this.setCurrentBook}
       fetchedBooks={this.sliceBooks()}
@@ -142,12 +144,14 @@ class App extends Component {
       </div>
     } else if (!this.state.currentBookId && !this.state.bookStart) {
       return <div className='pageBody'>
-      <button onClick={this.nextPage}>
-      Next Page
-      </button>
-      <button onClick={this.lastPage}>
-      Last page
-      </button>
+      <div className='pageButtons'>
+        <button onClick={this.nextPage}>
+        Next Page
+        </button>
+        <button onClick={this.lastPage}>
+        Last page
+        </button>
+      </div>
       <BooksBody
       setCurrentBook={this.setCurrentBook}
       fetchedBooks={this.sliceBooks()}
@@ -155,12 +159,14 @@ class App extends Component {
       </div>
     } else if (!this.state.currentBookId && this.state.bookEnd === this.state.fetchedBooks.length) {
       return <div className='pageBody'>
-      <button onClick={this.firstPage}>
-      First page
-      </button>
-      <button onClick={this.previousPage}>
-      Previous Page
-      </button>
+      <div className='pageButtons'>
+        <button onClick={this.firstPage}>
+        First page
+        </button>
+        <button onClick={this.previousPage}>
+        Previous Page
+        </button>
+      </div>
       <BooksBody
       setCurrentBook={this.setCurrentBook}
       fetchedBooks={this.sliceBooks()}
