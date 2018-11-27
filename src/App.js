@@ -16,9 +16,11 @@ class App extends Component {
       fetchedBooks: [],
       searchInput: '',
       currentBookId: null,
-      loading: true,
-      page: null,
-      pages: null
+      bookStart: 0,
+      bookEnd: 20,
+      // loading: true,
+      // page: null,
+      // pages: null
     }
   }
 
@@ -26,16 +28,47 @@ class App extends Component {
     this.fetchBooks()
   }
 
+  nextPage = () => {
+    this.setState({
+      bookStart: this.state.bookStart + 20,
+      bookEnd: this.state.bookEnd + 20
+    })
+  }
+
+  previousPage = () => {
+    this.setState({
+      bookStart: this.state.bookStart - 20,
+      bookEnd: this.state.bookEnd - 20
+    })
+  }
+
+  firstPage = () => {
+    this.setState({
+      bookStart: 0,
+      bookEnd: 20
+    })
+  }
+
+  lastPage = () => {
+    this.setState({
+      bookStart: this.state.fetchedBooks.length - 20,
+      bookEnd: this.state.fetchedBooks.length
+    })
+  }
+
+  sliceBooks = () => {
+    return this.state.fetchedBooks.slice(this.state.bookStart, this.state.bookEnd)
+  }
+
   fetchBooks = () => {
-    //only include books with ratings? and author and description? change database to only include
     fetch('http://localhost:4000/api/v1/books')
     .then(resp => resp.json())
     .then(json => {
       this.setState({
-        fetchedBooks: json.books,
+        fetchedBooks: json,
         loading: false,
-        page: json.page,
-        pages: json.pages
+        // page: json.page,
+        // pages: json.pages
       }, () => {
         console.log(this.state);
       })
@@ -72,19 +105,72 @@ class App extends Component {
     })
   }
 
-  handlePage = (e, { activePage }) => {
-    this.setState({
-      loading: true
-    })
-    fetch(`http://localhost:4000/api/v1/books/?page=${activePage}`)
-    .then(resp => resp.json())
-    .then(json => {
-      this.setState({
-        loading: false,
-        fetchedBooks: json.books,
-        page: json.page
-      })
-    })
+  // handlePage = (e, { activePage }) => {
+  //   this.setState({
+  //     loading: true
+  //   })
+  //   fetch(`http://localhost:4000/api/v1/books/?page=${activePage}`)
+  //   .then(resp => resp.json())
+  //   .then(json => {
+  //     this.setState({
+  //       loading: false,
+  //       fetchedBooks: json.books,
+  //       page: json.page
+  //     })
+  //   })
+  // }
+
+  pageRender = () => {
+    if (!this.state.currentBookId && this.state.bookStart && (this.state.bookEnd !== this.state.fetchedBooks.length)) {
+      return <div className='pageBody'>
+      <button onClick={this.firstPage}>
+      First page
+      </button>
+      <button onClick={this.previousPage}>
+      Previous Page
+      </button>
+      <button onClick={this.nextPage}>
+      Next Page
+      </button>
+      <button onClick={this.lastPage}>
+      Last page
+      </button>
+      <BooksBody
+      setCurrentBook={this.setCurrentBook}
+      fetchedBooks={this.sliceBooks()}
+      searchInput={this.state.searchInput} />
+      </div>
+    } else if (!this.state.currentBookId && !this.state.bookStart) {
+      return <div className='pageBody'>
+      <button onClick={this.nextPage}>
+      Next Page
+      </button>
+      <button onClick={this.lastPage}>
+      Last page
+      </button>
+      <BooksBody
+      setCurrentBook={this.setCurrentBook}
+      fetchedBooks={this.sliceBooks()}
+      searchInput={this.state.searchInput} />
+      </div>
+    } else if (!this.state.currentBookId && this.state.bookEnd === this.state.fetchedBooks.length) {
+      return <div className='pageBody'>
+      <button onClick={this.firstPage}>
+      First page
+      </button>
+      <button onClick={this.previousPage}>
+      Previous Page
+      </button>
+      <BooksBody
+      setCurrentBook={this.setCurrentBook}
+      fetchedBooks={this.sliceBooks()}
+      searchInput={this.state.searchInput} />
+      </div>
+    } else {
+      return <BookShow
+      findCurrentBook={this.findCurrentBook}
+      />
+    }
   }
 
 
@@ -97,28 +183,15 @@ class App extends Component {
         noBookSelected={this.noBookSelected}
         searchInput={this.state.searchInput}
         />
-
-
-        {!this.state.currentBookId ?
-          <div className='pageBody'>
-          <div id='pagination'>
-            <Pagination onPageChange={this.handlePage} defaultActivePage={this.state.page}
-            totalPages={this.state.pages}/>
-          </div>
-          <BooksBody
-          setCurrentBook={this.setCurrentBook}
-          fetchedBooks={this.state.fetchedBooks}
-          searchInput={this.state.searchInput} />
-          </div>
-          :
-          <BookShow
-          findCurrentBook={this.findCurrentBook}
-          />
-        }
+        {this.pageRender()}
         </div>
     )
   }
 }
 
+// <div id='pagination'>
+//   <Pagination onPageChange={this.handlePage} defaultActivePage={this.state.page}
+//   totalPages={this.state.pages}/>
+// </div>
 
 export default App
