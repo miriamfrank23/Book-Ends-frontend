@@ -18,11 +18,15 @@
   flex-wrap: wrap;
 }
 
-.pageBody {
+/* .pageBody {
   margin: 20px;
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+} */
+
+#pagination {
+  margin: 20px;
 }
 
 .bookCard {
@@ -33,7 +37,7 @@
   padding: 10px;
   border-radius: 2px;
   color: white;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .bookThumbnail:hover {

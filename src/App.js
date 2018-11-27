@@ -101,8 +101,10 @@ class App extends Component {
 
         {!this.state.currentBookId ?
           <div className='pageBody'>
-          <Pagination onPageChange={this.handlePage} defaultActivePage={this.state.page}
-          totalPages={this.state.pages}/>
+          <div id='pagination'>
+            <Pagination onPageChange={this.handlePage} defaultActivePage={this.state.page}
+            totalPages={this.state.pages}/>
+          </div>
           <BooksBody
           setCurrentBook={this.setCurrentBook}
           fetchedBooks={this.state.fetchedBooks}
