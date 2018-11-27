@@ -3,7 +3,6 @@ import BookCard from './BookCard'
 
 const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
 
-
   const mapThroughBooks = () => {
     return filterThroughBooks().map(book => {
       return <BookCard
@@ -27,15 +26,11 @@ const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
     )
   }
 
-
-
-
-
-    return (
-      <div className='booksBody'>
-      {mapThroughBooks()}
-      </div>
-    )
+  return (
+    <div className='booksBody'>
+    {mapThroughBooks()}
+    </div>
+  )
 
 }
 
