@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragmentq } from 'react'
 import './App.css'
 import BooksBody from './components/BooksBody'
 import NavBar from './components/NavBar'
@@ -97,12 +97,17 @@ class App extends Component {
         noBookSelected={this.noBookSelected}
         searchInput={this.state.searchInput}
         />
-        <Pagination onPageChange={this.handlePage} size='mini' activePage={this.state.page}
-        totalPages={this.state.pages}/>
-        {!this.state.currentBookId ? <BooksBody
+
+
+        {!this.state.currentBookId ?
+          <React.Fragment>
+          <Pagination onPageChange={this.handlePage} size='mini' defaultActivePage={this.state.page}
+          totalPages={this.state.pages}/>
+          <BooksBody
           setCurrentBook={this.setCurrentBook}
           fetchedBooks={this.state.fetchedBooks}
           searchInput={this.state.searchInput} />
+          </React.Fragment>
           :
           <BookShow
           findCurrentBook={this.findCurrentBook}

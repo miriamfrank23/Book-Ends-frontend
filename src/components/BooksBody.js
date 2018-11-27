@@ -21,15 +21,14 @@ const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
         book.title.toLowerCase().includes(searchInput.toLowerCase())
         ||
           book.description.toLowerCase().includes(searchInput.toLowerCase())
-      ||
-        book.authors[0].toLowerCase().includes(searchInput.toLowerCase())
-      )
-    })
+        ||
+        book.authors.filter(author => author.toLowerCase().includes(searchInput.toLowerCase())).length > 0
+      )}
+    )
   }
-  // need to update filter
-  // ||
-  //   book.volumeInfo.authors.forEach(author => author.toLowerCase().includes(searchInput.toLowerCase())
-  //   )
+
+
+
 
 
     return (

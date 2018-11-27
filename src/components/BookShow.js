@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Comment from './Comment'
+
 
 
 class BookShow extends Component {
@@ -61,6 +62,12 @@ class BookShow extends Component {
     })
   }
 
+  printOutAuthors = () => {
+    const { findCurrentBook } = this.props
+    return findCurrentBook().authors.map(author => {
+      return <div key={author}> {author} </div>
+    })
+  }
 
 
   render () {
@@ -76,9 +83,12 @@ class BookShow extends Component {
           className='showImage'/>
         }
         <div>
-        Title: {findCurrentBook().title}<br/><br/>
-        Description: {findCurrentBook().description}<br/>
-        Page count: {findCurrentBook().page_count}<br/>
+        Title: <br/>{findCurrentBook().title}<br/><br/>
+        Written by: {this.printOutAuthors()}<br/><br/>
+        Description: <br/>{findCurrentBook().description}<br/><br/>
+        Publisher: <br/>{findCurrentBook().publisher}<br/><br/>
+        Date published: <br/>{findCurrentBook().date_published}<br/><br/>
+        Page count: <br/>{findCurrentBook().page_count}<br/>
         <button>
         I read this book
         </button>
