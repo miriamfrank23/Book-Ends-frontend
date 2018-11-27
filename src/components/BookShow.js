@@ -19,11 +19,14 @@ class BookShow extends Component {
 
   showComments = () => {
     const { findCurrentBook } = this.props
-    fetch(`http://localhost:4000/api/v1/books/${findCurrentBook().id}/comments`)
+    fetch(`http://localhost:4000/api/v1/comments`)
     .then(resp => resp.json())
     .then(json => {
+      const bookComments = json.filter(comment => {
+        return comment.book_id === findCurrentBook().id
+      })
       this.setState({
-        allComments: json
+        allComments: bookComments
       })
     })
   }
@@ -39,7 +42,7 @@ class BookShow extends Component {
   createComment = () => {
     const { findCurrentBook } = this.props
     console.log('creating comment')
-    fetch(`http://localhost:4000/api/v1/books/${findCurrentBook().id}/comments`, {
+    fetch(`http://localhost:4000/api/v1/comments`, {
       method: 'POST',
       body: JSON.stringify({
         user_id: 1,
