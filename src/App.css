@@ -47,8 +47,8 @@
 
 .bookThumbnail {
   border-radius: 2px;
-  width: 165px;
-  height: 220px;
+  width: 140px;
+  height: 210px;
 }
 
 
@@ -73,8 +73,8 @@
 
 .showImage {
   border-radius: 2px;
-  width: 165px;
-  height: 220px;
+  width: 140px;
+  height: 210px;
   margin: 20px;
 }
 
@@ -152,11 +152,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stars {
-  width: 150px;
-  height: 40px;
+  width: 120px;
+  height: 30px;
 }
 
 select {
   margin: 25px;
+  height: 35px;
   font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
