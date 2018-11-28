@@ -56,10 +56,6 @@ class App extends Component {
     })
   }
 
-  sliceBooks = () => {
-    return this.state.fetchedBooks.slice(this.state.bookStart, this.state.bookEnd)
-  }
-
   fetchBooks = () => {
     fetch('http://localhost:4000/api/v1/books')
     .then(resp => resp.json())
@@ -136,34 +132,6 @@ class App extends Component {
     }
   }
 
-  // lowRatingSort = () => {
-  //   const sorted_by_rating = this.state.fetchedBooks.sort((a, b) => {
-  //     return a.average_rating - b.average_rating
-  //   })
-  //   this.setState({
-  //     fetchedBooks: sorted_by_rating
-  //   })
-  // }
-  //
-  // titleNameSort = () => {
-  //   const sorted_by_title = this.state.fetchedBooks.sort((a, b) => {
-  //     return a.title.localeCompare(b.title)
-  //   })
-  //   this.setState({
-  //     fetchedBooks: sorted_by_title
-  //   })
-  // }
-  //
-  // titleNameSortReverse = () => {
-  //   const sorted_by_title = this.state.fetchedBooks.sort((a, b) => {
-  //     return a.title.localeCompare(b.title)
-  //   }).reverse()
-  //   this.setState({
-  //     fetchedBooks: sorted_by_title
-  //   })
-  // }
-
-
   setCurrentBook = (id) => {
     this.setState({
       currentBookId: id
@@ -209,6 +177,37 @@ class App extends Component {
   //   })
   // }
 
+  filterThroughBooks = () => {
+    console.log(this.state.fetchedBooks);
+    return this.state.fetchedBooks.filter(book => {
+      return (
+        book.title.toLowerCase().includes(this.state.searchInput.toLowerCase())
+        ||
+          book.description.toLowerCase().includes(this.state.searchInput.toLowerCase())
+        ||
+        book.authors.filter(author => author.toLowerCase().includes(this.state.searchInput.toLowerCase())).length > 0
+      )}
+    ).slice(this.state.bookStart, this.state.bookEnd)
+  }
+
+  sliceBooks = () => {
+    return this.state.fetchedBooks.slice(this.state.bookStart, this.state.bookEnd)
+  }
+
+  chooseBookRendering = () => {
+    if (this.state.searchInput) {
+      return <BooksBody
+      setCurrentBook={this.setCurrentBook}
+      fetchedBooks={this.filterThroughBooks()}
+      searchInput={this.state.searchInput} />
+    } else {
+      return <BooksBody
+      setCurrentBook={this.setCurrentBook}
+      fetchedBooks={this.sliceBooks()}
+      searchInput={this.state.searchInput} />
+    }
+  }
+
 
   pageRender = () => {
     if (!this.state.currentBookId && this.state.bookStart && (this.state.bookEnd !== this.state.fetchedBooks.length)) {
@@ -227,10 +226,9 @@ class App extends Component {
         Last page
         </button>
       </div>
-      <BooksBody
-      setCurrentBook={this.setCurrentBook}
-      fetchedBooks={this.sliceBooks()}
-      searchInput={this.state.searchInput} />
+
+      {this.chooseBookRendering()}
+
       </div>
     } else if (!this.state.currentBookId && !this.state.bookStart) {
       return <div className='pageBody'>
@@ -242,10 +240,9 @@ class App extends Component {
         Last page
         </button>
       </div>
-      <BooksBody
-      setCurrentBook={this.setCurrentBook}
-      fetchedBooks={this.sliceBooks()}
-      searchInput={this.state.searchInput} />
+
+      {this.chooseBookRendering()}
+
       </div>
     } else if (!this.state.currentBookId && this.state.bookEnd === this.state.fetchedBooks.length) {
       return <div className='pageBody'>
@@ -257,10 +254,9 @@ class App extends Component {
         Previous Page
         </button>
       </div>
-      <BooksBody
-      setCurrentBook={this.setCurrentBook}
-      fetchedBooks={this.sliceBooks()}
-      searchInput={this.state.searchInput} />
+
+      {this.chooseBookRendering()}
+
       </div>
     } else {
       return <BookShow
