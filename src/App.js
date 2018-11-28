@@ -275,7 +275,7 @@ class App extends Component {
         noBookSelected={this.noBookSelected}
         searchInput={this.state.searchInput}
         />
-        <div>
+        {!this.state.currentBookId ? <div>
           <select onChange={this.sortBooks} type="select" name="select">
             <option value='rd'>Average rating descending</option>
             <option value='ra'>Average rating ascending</option>
@@ -284,7 +284,7 @@ class App extends Component {
             <option value='ad'>Author descending</option>
             <option value='aa'>Author ascending</option>
           </select>
-        </div>
+        </div> : null}
         {this.pageRender()}
         </div>
     )
