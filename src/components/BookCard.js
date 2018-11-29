@@ -27,7 +27,8 @@ const BookCard = ({ book, setCurrentBook }) => {
           {book.authors ? printOutAuthors() : 'not listed'
           }
 
-          Average rating: {book.average_rating === 5 ? <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/> : book.average_rating}
+          Average rating:<br/>
+           {book.average_rating === 5 ? <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/> : book.average_rating}
         </div>
       </React.Fragment>
     )

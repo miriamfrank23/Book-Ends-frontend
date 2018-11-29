@@ -32,6 +32,7 @@
 
 .bookCard {
   width: 250px;
+  /* height: auto; */
   text-align: center;
   word-wrap: normal;
   margin: 10px;
@@ -88,8 +89,29 @@ input {
   height: 35px;
   margin: 10px;
   background-color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+}
+
+button {
+  border-radius: 2px;
+  margin: 20px;
+  width: 200px;
+  height: 30px;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+select {
+  margin: 25px;
+  height: 35px;
+  font-size: 16px;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
 }
 
 #navBarButton {
@@ -100,16 +122,6 @@ input {
   width: 200px;
 }
 
-button {
-  border-radius: 2px;
-  margin: 20px;
-  width: 200px;
-  height: 30px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-}
-
 .profileIcon {
   margin: 20px;
   display: flex;
@@ -118,7 +130,7 @@ button {
 }
 
 .profileIcon:hover {
-  color: white;
+  /* color: white; */
 }
 
 .profileImage {
@@ -147,7 +159,8 @@ button {
 
 h1, h2, h3, h4, h5, h6 {
  /* font-family: 'Fjalla One', serif; */
- font-family: 'Montserrat', sans-serif;
+ /* font-family: 'Montserrat', sans-serif; */
+ font-family: 'Oswald', sans-serif;
  font-weight: bold;
 }
 
@@ -156,9 +169,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 30px;
 }
 
-select {
-  margin: 25px;
-  height: 35px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+#loginForm {
+  color: #800020;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 100px;
 }

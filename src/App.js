@@ -4,7 +4,8 @@ import BooksBody from './components/BooksBody'
 import NavBar from './components/NavBar'
 import BookShow from './components/BookShow'
 import UserProfile from './components/UserProfile'
-import { Pagination } from 'semantic-ui-react'
+import LoginPage from './components/LoginPage'
+
 
 
 class App extends Component {
@@ -21,11 +22,45 @@ class App extends Component {
       // loading: true,
       // page: null,
       // pages: null
+      currentUser: null,
+      signingIn: false
     }
   }
 
+  setCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+  }
+
+  logOut = () => {
+    this.setState({
+      currentUser: null
+    }, () => {
+      window.localStorage.removeItem('jwt')
+      console.log(window.localStorage)
+    })
+  }
+
+  fetchBooks = () => {
+    fetch('http://localhost:4000/api/v1/books')
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({
+        fetchedBooks: json,
+        // loading: false,
+        // page: json.page,
+        // pages: json.pages
+      }, () => {
+        this.defaultSort()
+      })
+    })
+  }
+
+
   componentDidMount() {
     this.fetchBooks()
+    // this.makeAUser()
   }
 
   nextPage = () => {
@@ -56,20 +91,6 @@ class App extends Component {
     })
   }
 
-  fetchBooks = () => {
-    fetch('http://localhost:4000/api/v1/books')
-    .then(resp => resp.json())
-    .then(json => {
-      this.setState({
-        fetchedBooks: json,
-        // loading: false,
-        // page: json.page,
-        // pages: json.pages
-      }, () => {
-        this.defaultSort()
-      })
-    })
-  }
 
   defaultSort = () => {
     const sorted_by_rating = this.state.fetchedBooks.sort((a, b) => {
@@ -152,7 +173,7 @@ class App extends Component {
     this.setState({
       searchInput: input
     }, () => {
-      // console.log(this.state.searchInput)
+      console.log(this.state.searchInput)
     })
   }
 
@@ -162,20 +183,6 @@ class App extends Component {
     })
   }
 
-  // handlePage = (e, { activePage }) => {
-  //   this.setState({
-  //     loading: true
-  //   })
-  //   fetch(`http://localhost:4000/api/v1/books/?page=${activePage}`)
-  //   .then(resp => resp.json())
-  //   .then(json => {
-  //     this.setState({
-  //       loading: false,
-  //       fetchedBooks: json.books,
-  //       page: json.page
-  //     })
-  //   })
-  // }
 
   filterThroughBooks = () => {
     console.log(this.state.fetchedBooks);
@@ -265,17 +272,29 @@ class App extends Component {
     }
   }
 
+  showLoginPage = () => {
+    this.setState({
+      signingIn: true
+    })
+  }
 
-  render() {
-    return (
-      <div className="App">
-        <NavBar
+  intialRender = () => {
+    if(!this.state.currentUser){
+      return(
+        <LoginPage setCurrentUser={this.setCurrentUser}/>
+      )
+    } else if(this.state.currentUser && !this.state.currentBookId) {
+      return(
+      <div>
+      <NavBar
         captureInput={this.captureInput}
         currentBookId={this.state.currentBookId}
         noBookSelected={this.noBookSelected}
         searchInput={this.state.searchInput}
+        currentUser={this.state.currentUser}
+        showLoginPage={this.showLoginPage}
+        logOut={this.logOut}
         />
-        {!this.state.currentBookId ? <div>
           <select onChange={this.sortBooks} type="select" name="select">
             <option value='rd'>Average rating descending</option>
             <option value='ra'>Average rating ascending</option>
@@ -284,16 +303,59 @@ class App extends Component {
             <option value='ad'>Author descending</option>
             <option value='aa'>Author ascending</option>
           </select>
-        </div> : null}
+          {this.pageRender()}
+        </div>
+      )
+    } else {
+      return (
+        <div>
+        <NavBar
+          captureInput={this.captureInput}
+          currentBookId={this.state.currentBookId}
+          noBookSelected={this.noBookSelected}
+          searchInput={this.state.searchInput}
+          currentUser={this.state.currentUser}
+          showLoginPage={this.showLoginPage}
+        />
         {this.pageRender()}
         </div>
+      )
+    }
+  }
+
+
+  // <div className="App">
+  //   {!currentUser ?
+  //   <LoginPage setCurrentUser={this.setCurrentUser}/> :
+  //   <NavBar
+  //   captureInput={this.captureInput}
+  //   currentBookId={this.state.currentBookId}
+  //   noBookSelected={this.noBookSelected}
+  //   searchInput={this.state.searchInput}
+  //   currentUser={this.state.currentUser}
+  //   showLoginPage={this.showLoginPage}
+  //   />
+  //   !this.state.currentBookId ? <div>
+  //       <select onChange={this.sortBooks} type="select" name="select">
+  //         <option value='rd'>Average rating descending</option>
+  //         <option value='ra'>Average rating ascending</option>
+  //         <option value='td'>Title descending</option>
+  //         <option value='ta'>Title ascending</option>
+  //         <option value='ad'>Author descending</option>
+  //         <option value='aa'>Author ascending</option>
+  //       </select>
+  //     </div> : null
+  //     this.pageRender()
+  //   }
+
+  render() {
+    return (
+      <div className="App">
+        {this.intialRender()}
+      </div>
     )
   }
 }
 
-// <div id='pagination'>
-//   <Pagination onPageChange={this.handlePage} defaultActivePage={this.state.page}
-//   totalPages={this.state.pages}/>
-// </div>
 
 export default App

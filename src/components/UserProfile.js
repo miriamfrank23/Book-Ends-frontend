@@ -1,8 +1,6 @@
 import React from 'react'
 
-const UserProfile = ({ }) => {
-
-
+const UserProfile = ({ props }) => {
 
   return (
     <div>
