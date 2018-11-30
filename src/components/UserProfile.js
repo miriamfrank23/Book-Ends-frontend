@@ -6,7 +6,7 @@ const UserProfile = ({ currentUser, backToIndex }) => {
   const showUserComments = () => {
     if (currentUser.comments.length > 0) {
       return currentUser.comments.map(comment => {
-        return <div key={comment}>{comment}</div>
+        return <div key={comment.id}>{comment.text}</div>
       })
     } else {
       return "You haven't commented on any books yet"
@@ -16,7 +16,10 @@ const UserProfile = ({ currentUser, backToIndex }) => {
   const showUserBooks = () => {
     if (currentUser.books.length > 0) {
       return currentUser.books.map(book => {
-        return <div key={book}>{book}</div>
+        return <div key={book.id}>
+        <img alt='' src={book.thumbnail}/><br/>
+        {book.title}
+        </div>
       })
     } else {
       return "You haven't added any read books yet"
