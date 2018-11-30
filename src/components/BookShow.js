@@ -45,7 +45,7 @@ class BookShow extends Component {
     fetch(`http://localhost:4000/api/v1/comments`, {
       method: 'POST',
       body: JSON.stringify({
-        user_id: 1,
+        user_id: this.props.currentUser.id,
         book_id: findCurrentBook().id,
         text: this.state.comment
       }),
@@ -97,9 +97,7 @@ class BookShow extends Component {
         <button>
         I read this book
         </button>
-        <button>
-        I want to read this book
-        </button><br/>
+        <br/>
         Leave a comment:
         <input
         value={this.state.comment}
@@ -110,7 +108,8 @@ class BookShow extends Component {
         </button>
         </div>
         <div className='commentContainer'>
-          <Comment allComments={this.state.allComments}/>
+          <Comment allComments={this.state.allComments}
+          currentUser={this.props.currentUser}/>
         </div>
       </div>
     )
@@ -119,3 +118,9 @@ class BookShow extends Component {
 
 
 export default BookShow
+
+
+
+// <button>
+// I want to read this book
+// </button>

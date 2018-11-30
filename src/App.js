@@ -7,7 +7,6 @@ import UserProfile from './components/UserProfile'
 import LoginPage from './components/LoginPage'
 
 
-
 class App extends Component {
 
 
@@ -19,11 +18,8 @@ class App extends Component {
       currentBookId: null,
       bookStart: 0,
       bookEnd: 20,
-      // loading: true,
-      // page: null,
-      // pages: null
       currentUser: null,
-      signingIn: false
+      showingUserProfile: false
     }
   }
 
@@ -41,6 +37,7 @@ class App extends Component {
       console.log(window.localStorage)
     })
   }
+
 
   fetchBooks = () => {
     fetch('http://localhost:4000/api/v1/books')
@@ -268,20 +265,21 @@ class App extends Component {
     } else {
       return <BookShow
       findCurrentBook={this.findCurrentBook}
+      currentUser={this.state.currentUser}
       />
     }
   }
 
-  showLoginPage = () => {
-    this.setState({
-      signingIn: true
-    })
-  }
 
   intialRender = () => {
     if(!this.state.currentUser){
       return(
         <LoginPage setCurrentUser={this.setCurrentUser}/>
+      )
+    } else if (this.state.currentUser && this.state.showingUserProfile) {
+      return (
+        <UserProfile currentUser={this.state.currentUser}
+        backToIndex={this.backToIndex}/>
       )
     } else if(this.state.currentUser && !this.state.currentBookId) {
       return(
@@ -294,6 +292,7 @@ class App extends Component {
         currentUser={this.state.currentUser}
         showLoginPage={this.showLoginPage}
         logOut={this.logOut}
+        showUserProfile={this.showUserProfile}
         />
           <select onChange={this.sortBooks} type="select" name="select">
             <option value='rd'>Average rating descending</option>
@@ -324,29 +323,18 @@ class App extends Component {
   }
 
 
-  // <div className="App">
-  //   {!currentUser ?
-  //   <LoginPage setCurrentUser={this.setCurrentUser}/> :
-  //   <NavBar
-  //   captureInput={this.captureInput}
-  //   currentBookId={this.state.currentBookId}
-  //   noBookSelected={this.noBookSelected}
-  //   searchInput={this.state.searchInput}
-  //   currentUser={this.state.currentUser}
-  //   showLoginPage={this.showLoginPage}
-  //   />
-  //   !this.state.currentBookId ? <div>
-  //       <select onChange={this.sortBooks} type="select" name="select">
-  //         <option value='rd'>Average rating descending</option>
-  //         <option value='ra'>Average rating ascending</option>
-  //         <option value='td'>Title descending</option>
-  //         <option value='ta'>Title ascending</option>
-  //         <option value='ad'>Author descending</option>
-  //         <option value='aa'>Author ascending</option>
-  //       </select>
-  //     </div> : null
-  //     this.pageRender()
-  //   }
+  showUserProfile = () => {
+    this.setState({
+      showingUserProfile: true
+    })
+  }
+
+  backToIndex = () => {
+    this.setState({
+      showingUserProfile: false
+    })
+  }
+
 
   render() {
     return (

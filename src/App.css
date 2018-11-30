@@ -72,6 +72,14 @@
   opacity: .80;
 }
 
+.userProfile {
+  border-radius: 2px;
+  margin: 50px;
+  padding: 20px;
+  background: white;
+  opacity: .80;
+}
+
 .showImage {
   border-radius: 2px;
   width: 140px;
@@ -123,10 +131,10 @@ select {
 }
 
 .profileIcon {
-  margin: 20px;
+  /* margin: 20px; */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* flex-direction: column;
+  justify-content: center; */
 }
 
 .profileIcon:hover {
