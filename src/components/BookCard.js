@@ -10,6 +10,38 @@ const BookCard = ({ book, setCurrentBook }) => {
     })
   }
 
+  const ratingStars = () => {
+    switch (book.average_rating) {
+    case 1:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 1.5:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 2:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 2.5:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 3:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 3.5:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 4:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 4.5:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+    case 5:
+      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      break;
+      }
+    }
+
 
     return (
       <React.Fragment>
@@ -28,7 +60,7 @@ const BookCard = ({ book, setCurrentBook }) => {
           }
 
           Average rating:<br/>
-           {book.average_rating === 5 ? <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/> : book.average_rating}
+           {ratingStars()}
         </div>
       </React.Fragment>
     )

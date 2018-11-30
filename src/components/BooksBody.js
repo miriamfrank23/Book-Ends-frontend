@@ -4,7 +4,6 @@ import BookCard from './BookCard'
 const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
 
   const mapThroughBooks = () => {
-    // debugger
     return fetchedBooks.map(book => {
       return <BookCard
         setCurrentBook={setCurrentBook}

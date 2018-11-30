@@ -19,7 +19,13 @@ class BookShow extends Component {
 
   showComments = () => {
     const { findCurrentBook } = this.props
-    fetch(`http://localhost:4000/api/v1/comments`)
+    fetch(`http://localhost:4000/api/v1/comments`, {
+        method: 'GET',
+        headers: {
+           Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    )
     .then(resp => resp.json())
     .then(json => {
       const bookComments = json.filter(comment => {
@@ -49,8 +55,10 @@ class BookShow extends Component {
         book_id: findCurrentBook().id,
         text: this.state.comment
       }),
-      headers:{
-        'Content-Type': 'application/json'
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(resp => resp.json())

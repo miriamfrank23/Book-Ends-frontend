@@ -40,24 +40,42 @@ class App extends Component {
 
 
   fetchBooks = () => {
-    fetch('http://localhost:4000/api/v1/books')
+    fetch('http://localhost:4000/api/v1/books', {
+      method: 'GET',
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
     .then(resp => resp.json())
     .then(json => {
       this.setState({
         fetchedBooks: json,
-        // loading: false,
-        // page: json.page,
-        // pages: json.pages
       }, () => {
         this.defaultSort()
       })
     })
   }
 
+  resetCurrentUser = () => {
+    console.log(localStorage.getItem('jwt'))
+    fetch('http://localhost:4000/api/v1/profile', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        currentUser: data
+      })
+    })
+  }
+
 
   componentDidMount() {
+    this.resetCurrentUser()
     this.fetchBooks()
-    // this.makeAUser()
   }
 
   nextPage = () => {
