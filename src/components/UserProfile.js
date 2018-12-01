@@ -4,8 +4,9 @@ const UserProfile = ({ currentUser, backToIndex }) => {
 
 
   const showUserComments = () => {
-    if (currentUser.comments.length > 0) {
-      return currentUser.comments.map(comment => {
+    // debugger
+    if (currentUser.user.comments.length > 0) {
+      return currentUser.user.comments.map(comment => {
         return <div key={comment.id}>{comment.text}</div>
       })
     } else {
@@ -14,8 +15,8 @@ const UserProfile = ({ currentUser, backToIndex }) => {
   }
 
   const showUserBooks = () => {
-    if (currentUser.books.length > 0) {
-      return currentUser.books.map(book => {
+    if (currentUser.user.books.length > 0) {
+      return currentUser.user.books.map(book => {
         return <div key={book.id}>
         <img alt='' src={book.thumbnail}/><br/>
         {book.title}

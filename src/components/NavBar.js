@@ -8,7 +8,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
     return (
       <div className='navBar'>
       <h1 id='logo'>
-        Bookz
+        Book Ends
       </h1>
         {currentBookId ?
           <button id='navBarButton'
@@ -23,12 +23,14 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
         {currentUser ? <div className='profileIcon'>
           <img src={'https://avatars2.githubusercontent.com/u/16786985?s=460&v=4'}
           className='profileImage' alt=''/>
-          <button onClick={showUserProfile}>
-            View my profile
-          </button>
-          <button onClick={logOut}>
-          Sign out
-          </button>
+          <div id='profileButtons'>
+            <button onClick={showUserProfile}>
+              View my profile
+            </button>
+            <button onClick={logOut}>
+            Sign out
+            </button>
+          </div>
         </div>
         :
         <div onClick={showLoginPage}>

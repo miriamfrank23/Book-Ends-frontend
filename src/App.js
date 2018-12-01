@@ -5,6 +5,8 @@ import NavBar from './components/NavBar'
 import BookShow from './components/BookShow'
 import UserProfile from './components/UserProfile'
 import LoginPage from './components/LoginPage'
+// import Loads from 'react-loads';
+const axios = require('axios')
 
 
 class App extends Component {
@@ -21,6 +23,18 @@ class App extends Component {
       currentUser: null,
       showingUserProfile: false
     }
+  }
+
+  // shouldComponentUpdate(nextState) {
+  //   if (this.state.fetchedBooks !== nextState.fetchedBooks) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  componentDidMount() {
+    this.resetCurrentUser()
+    this.fetchBooks()
   }
 
   setCurrentUser = (user) => {
@@ -40,18 +54,20 @@ class App extends Component {
 
 
   fetchBooks = () => {
-    fetch('http://localhost:4000/api/v1/books', {
-      method: 'GET',
+    console.log('start fetching books')
+    axios.get('http://localhost:4000/api/v1/books', {
       headers: {
-         Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-    .then(resp => resp.json())
-    .then(json => {
-      this.setState({
-        fetchedBooks: json,
-      }, () => {
+    .then(resp => {
+      // debugger
+        this.setState({
+          fetchedBooks: resp.data
+        }, () => {
+        console.log('end fetching books')
         this.defaultSort()
+        console.log('sorted')
       })
     })
   }
@@ -70,12 +86,6 @@ class App extends Component {
         currentUser: data
       })
     })
-  }
-
-
-  componentDidMount() {
-    this.resetCurrentUser()
-    this.fetchBooks()
   }
 
   nextPage = () => {
@@ -200,7 +210,7 @@ class App extends Component {
 
 
   filterThroughBooks = () => {
-    console.log(this.state.fetchedBooks);
+    // console.log(this.state.fetchedBooks);
     return this.state.fetchedBooks.filter(book => {
       return (
         book.title.toLowerCase().includes(this.state.searchInput.toLowerCase())

@@ -3,6 +3,7 @@
 }
 
 #logo {
+  padding-top: 20px;
   padding-bottom: 70px;
   padding-left: 20px;
   font-size: 40px;
@@ -50,6 +51,7 @@
   border-radius: 2px;
   width: 140px;
   height: 210px;
+  /* box-shadow: 3px 3px 3px 3px white;   */
 }
 
 
@@ -183,4 +185,10 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-end;
   justify-content: flex-end;
   margin: 100px;
+}
+
+#profileButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
