@@ -66,8 +66,8 @@ class LoginPage extends Component {
 
   render () {
     return (
-      <div id='loginForm' onSubmit={this.logUserIn}>
-      <form>
+      <div id='formsContainer' onSubmit={this.logUserIn}>
+      <form id='loginForm'>
       <h2>
         Sign in here!
       </h2>

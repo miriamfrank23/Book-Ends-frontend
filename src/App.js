@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import BookShow from './components/BookShow'
 import UserProfile from './components/UserProfile'
 import LoginPage from './components/LoginPage'
-// import Loads from 'react-loads';
+import MysteryImage from './components/MysteryImage'
 const axios = require('axios')
 
 
@@ -19,23 +19,30 @@ class App extends Component {
       searchInput: '',
       currentBookId: null,
       bookStart: 0,
-      bookEnd: 20,
+      bookEnd: 16,
       currentUser: null,
-      showingUserProfile: false
+      showingUserProfile: false,
+      booksLoading: true
     }
   }
-
-  // shouldComponentUpdate(nextState) {
-  //   if (this.state.fetchedBooks !== nextState.fetchedBooks) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
 
   componentDidMount() {
     this.resetCurrentUser()
     this.fetchBooks()
   }
+
+  // componentWillUnmount() {
+  //   debugger
+  //   localStorage.setItem('books', JSON.stringify(this.state.fetchedBooks))
+  // }
+
+  // componentWillMount() {
+  //   // debugger
+  //   const rehydrate = JSON.parse(localStorage.getItem('books'))
+  //   this.setState(rehydrate)
+  // }
+
+
 
   setCurrentUser = (user) => {
     this.setState({
@@ -90,28 +97,28 @@ class App extends Component {
 
   nextPage = () => {
     this.setState({
-      bookStart: this.state.bookStart + 20,
-      bookEnd: this.state.bookEnd + 20
+      bookStart: this.state.bookStart + 16,
+      bookEnd: this.state.bookEnd + 16
     })
   }
 
   previousPage = () => {
     this.setState({
-      bookStart: this.state.bookStart - 20,
-      bookEnd: this.state.bookEnd - 20
+      bookStart: this.state.bookStart - 16,
+      bookEnd: this.state.bookEnd - 16
     })
   }
 
   firstPage = () => {
     this.setState({
       bookStart: 0,
-      bookEnd: 20
+      bookEnd: 16
     })
   }
 
   lastPage = () => {
     this.setState({
-      bookStart: this.state.fetchedBooks.length - 20,
+      bookStart: this.state.fetchedBooks.length - 16,
       bookEnd: this.state.fetchedBooks.length
     })
   }
@@ -322,6 +329,7 @@ class App extends Component {
         logOut={this.logOut}
         showUserProfile={this.showUserProfile}
         />
+        <MysteryImage />
           <select onChange={this.sortBooks} type="select" name="select">
             <option value='rd'>Average rating descending</option>
             <option value='ra'>Average rating ascending</option>

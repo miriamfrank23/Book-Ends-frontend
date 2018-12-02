@@ -46,12 +46,12 @@ class BookShow extends Component {
   }
 
   createComment = () => {
-    const { findCurrentBook } = this.props
+    const { findCurrentBook, currentUser } = this.props
     console.log('creating comment')
     fetch(`http://localhost:4000/api/v1/comments`, {
       method: 'POST',
       body: JSON.stringify({
-        user_id: this.props.currentUser.id,
+        user_id: currentUser.user.id,
         book_id: findCurrentBook().id,
         text: this.state.comment
       }),
@@ -83,7 +83,7 @@ class BookShow extends Component {
 
   render () {
     const { findCurrentBook } = this.props
-    console.log(this.state.allComments)
+    // console.log(this.state.allComments)
     return (
       <div className='bookShow'>
       <div className='bookDetails'>
@@ -116,8 +116,11 @@ class BookShow extends Component {
         </button>
         </div>
         <div className='commentContainer'>
-          <Comment allComments={this.state.allComments}
-          currentUser={this.props.currentUser}/>
+          {this.state.allComments.length > 0 ?
+            <Comment allComments={this.state.allComments}
+            currentUser={this.props.currentUser}/> :
+            null
+          }
         </div>
       </div>
     )

@@ -13,23 +13,77 @@ const BookCard = ({ book, setCurrentBook }) => {
   const ratingStars = () => {
     switch (book.average_rating) {
     case 1:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      return <div>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star-o fa-lg" ></span>
+        <span className="fa fa-star-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+      </div>
     case 1.5:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      return <div>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star-half-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+      </div>
     case 2:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+    return <div>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star-o fa-lg"></span>
+      <span className="fa fa-star-o fa-lg"></span>
+      <span className="fa fa-star-o fa-lg"></span>
+    </div>
     case 2.5:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      return  <div>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star-half-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+      </div>
     case 3:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+    return <div>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star-o fa-lg"></span>
+      <span className="fa fa-star-o fa-lg"></span>
+    </div>
     case 3.5:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      return <div>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star-half-o fa-lg"></span>
+        <span className="fa fa-star-o fa-lg"></span>
+      </div>
     case 4:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+    return <div>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star-o fa-lg"></span>
+    </div>
     case 4.5:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+      return <div>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star checked fa-lg"></span>
+        <span className="fa fa-star-half-o fa-lg"></span>
+      </div>
     case 5:
-      return <img className='stars' alt='' src='https://interviewstream.com/wp-content/uploads/2016/04/5-star.png'/>
+    return <div>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+      <span className="fa fa-star checked fa-lg"></span>
+    </div>
     default:
       return 'hi';
       }
@@ -51,8 +105,6 @@ const BookCard = ({ book, setCurrentBook }) => {
           Author/s:
           {book.authors ? printOutAuthors() : 'not listed'
           }
-
-          Average rating:<br/>
            {ratingStars()}
         </div>
       </React.Fragment>

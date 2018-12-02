@@ -35,7 +35,7 @@ const UserProfile = ({ currentUser, backToIndex }) => {
       </button>
       <div className='userProfile'>
         <h2>
-          Welcome {currentUser.first_name}!
+          Welcome {currentUser.user.first_name}!
         </h2>
         {showUserComments()}<br/>
         {showUserBooks()}

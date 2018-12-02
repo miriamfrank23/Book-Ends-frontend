@@ -13,7 +13,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
         {currentBookId ?
           <button id='navBarButton'
           onClick={noBookSelected}>
-            Back to browse books
+            Back to browse 
           </button> :
           <SearchBar
             captureInput={captureInput}
@@ -21,9 +21,10 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
           />
         }
         {currentUser ? <div className='profileIcon'>
-          <img src={'https://avatars2.githubusercontent.com/u/16786985?s=460&v=4'}
-          className='profileImage' alt=''/>
           <div id='profileButtons'>
+            <h3>
+            {`Welcome, ${currentUser.user.first_name}!`}
+            </h3>
             <button onClick={showUserProfile}>
               View my profile
             </button>
@@ -39,6 +40,8 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
       </div>
     )
 
+    // <img src={'https://avatars2.githubusercontent.com/u/16786985?s=460&v=4'}
+    // className='profileImage' alt=''/>
 }
 
 export default NavBar
