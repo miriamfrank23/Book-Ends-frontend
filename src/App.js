@@ -27,9 +27,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setCurrentUser(this.state.currentUser)
-    // this.resetCurrentUser()
     this.fetchBooks()
+    this.resetCurrentUser()
   }
 
   fetchBooks = () => {
@@ -40,7 +39,6 @@ class App extends Component {
       }
     })
     .then(resp => {
-      // debugger
       this.setState({
         fetchedBooks: resp.data
       }, () => {
@@ -84,7 +82,6 @@ class App extends Component {
   }
 
 
-
   resetCurrentUser = () => {
     console.log(localStorage.getItem('jwt'))
     if (localStorage.getItem('jwt')) {
@@ -96,9 +93,9 @@ class App extends Component {
       })
       .then(resp => resp.json())
       .then(data => {
-        if (data.first_name)
+        if (data.user.first_name)
         this.setState({
-          currentUser: data
+          currentUser: data.user
         })
       })
     }

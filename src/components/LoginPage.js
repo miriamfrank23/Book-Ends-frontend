@@ -75,6 +75,8 @@ class LoginPage extends Component {
   render () {
     return (
       <div id='formsContainer' onSubmit={this.logUserIn}>
+        <div className='loginImage'>
+        </div>
       <form id='loginForm'>
       <h2>
         Sign in here!
@@ -91,7 +93,7 @@ class LoginPage extends Component {
       <input type="submit" value="Sign in" />
       </form>
 
-      <form onSubmit={this.createNewUser}>
+      <form onSubmit={this.createNewUser} id='signupForm'>
       <h2>
         New here? Create an account!
       </h2>

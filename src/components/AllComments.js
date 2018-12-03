@@ -2,7 +2,7 @@ import React from 'react'
 import Comment from './Comment'
 
 
-const AllComments = ({ fetchedUsers, allComments, currentUser }) => {
+const AllComments = ({ fetchedUsers, allComments, currentUser, deleteComments }) => {
 
 
 
@@ -10,7 +10,9 @@ const AllComments = ({ fetchedUsers, allComments, currentUser }) => {
   const showAllComments = () => {
     return allComments.map(comment => {
       return <Comment key={comment.id} comment={comment} fetchedUsers={fetchedUsers}
-      currentUser={currentUser}/>
+      currentUser={currentUser}
+      deleteComments={deleteComments}
+      />
     })
   }
 

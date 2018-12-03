@@ -17,6 +17,16 @@ class BookShow extends Component {
     this.showComments()
   }
 
+  deleteComments = (comment) => {
+    const allNewComments = this.state.allComments.filter(eachComment => {
+      return comment.id !== eachComment.id
+    })
+    debugger
+    this.setState({
+      allComments: allNewComments
+    })
+  }
+
   showComments = () => {
     const { findCurrentBook } = this.props
     fetch(`http://localhost:4000/api/v1/comments`, {
@@ -47,28 +57,33 @@ class BookShow extends Component {
 
   createComment = () => {
     const { findCurrentBook, currentUser } = this.props
+    // optimistically render
+    const newComment =  {
+      user_id: currentUser.id,
+      book_id: findCurrentBook().id,
+      text: this.state.comment
+    }
+    const allNewComments = this.state.allComments.concat(newComment)
+
+    this.setState({
+      allComments: allNewComments
+    })
+
+    //send new comment to db
     console.log('creating comment')
     fetch(`http://localhost:4000/api/v1/comments`, {
       method: 'POST',
-      body: JSON.stringify({
-        user_id: currentUser.id,
-        book_id: findCurrentBook().id,
-        text: this.state.comment
-      }),
+      body: JSON.stringify(newComment),
       headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-    .then(resp => resp.json())
-    .then(json => {
-      const newComments = this.state.allComments.concat(json)
+    .then(resp => {
+      console.log(resp);
       this.setState({
-        allComments: newComments,
         comment: ''
-      }, () => {
-        console.log(this.state.allComments)
       })
     })
   }
@@ -118,7 +133,8 @@ class BookShow extends Component {
           {this.state.allComments.length > 0 ?
             <AllComments allComments={this.state.allComments}
             currentUser={this.props.currentUser}
-            fetchedUsers={this.props.fetchedUsers}/> :
+            fetchedUsers={this.props.fetchedUsers}
+            deleteComments={this.deleteComments}/> :
             null
           }
 

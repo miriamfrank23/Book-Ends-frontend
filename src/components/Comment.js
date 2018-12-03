@@ -33,7 +33,18 @@ class Comment extends Component {
   }
 
   deleteComment = (comment) => {
-    debugger
+    //optimistically render
+    this.props.deleteComments(comment)
+    
+    axios.delete(
+      `http://localhost:4000/api/v1/comments/${comment.id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(resp => {
+      console.log(resp);
+    })
   }
 
   findUser = () => {
@@ -46,7 +57,7 @@ class Comment extends Component {
   renderComment = () => {
     if (this.state.users.length > 0) {
       return <div> {this.findUser().first_name}: {this.props.comment.text}
-      {this.props.comment.user_id === this.props.currentUser.id ? <div><button>Edit</button><button onClick={() => this.deleteComment(this.props.comment)}>Delete</button></div> : null}
+      {this.props.comment.user_id === this.props.currentUser.id ? <div><button >Edit</button><button onClick={() => this.deleteComment(this.props.comment)}>Delete</button></div> : null}
       </div>
     } else {
       return 'Loading comment'

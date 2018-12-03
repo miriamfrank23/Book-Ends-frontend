@@ -54,14 +54,6 @@
   height: 150px;
 }
 
-.trees {
-  margin-top: 30px;
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
-  url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg');
-}
-
 .bookShow {
   border-radius: 2px;
   margin-top: 30px;
@@ -182,14 +174,19 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #formsContainer {
-  color: black;
+  color: #1F3044;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  margin: 100px;
+  /* margin: 100px; */
 }
 
 #loginForm {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+#signupForm {
   margin-right: 100px;
 }
 
@@ -220,7 +217,27 @@ h1, h2, h3, h4, h5, h6 {
   /* background-attachment: fixed; */
 }
 
+.loginImage {
+  height: 900px;
+  width: 100%;
+  background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
+  url('https://c1.staticflickr.com/6/5524/30628679132_ca19d26013_b.jpg')no-repeat;
+  background-size: 100% 100%;
 
+}
+
+.trees {
+  margin-top: 30px;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
+  url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg');
+}
+
+/* #imageCollage {
+  display: flex;
+  flex-direction: column;
+} */
 
 .checked, .half-o, .fa{
   color: #1F3044;
