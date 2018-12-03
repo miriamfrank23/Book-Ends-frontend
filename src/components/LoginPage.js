@@ -21,14 +21,17 @@ class LoginPage extends Component {
   }
 
   createNewUser = (e) => {
+    // debugger
     e.preventDefault()
     fetch(`http://localhost:4000/api/v1/users`, {
       method: 'POST',
       body: JSON.stringify({
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        email: this.state.email,
-        password: this.state.password
+        user: {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          email: this.state.email,
+          password: this.state.password
+        }
       }),
       headers:{
         'Content-Type': 'application/json'
@@ -36,9 +39,12 @@ class LoginPage extends Component {
     })
     .then(resp => resp.json())
     .then(parsed => {
-      window.localStorage.setItem('jwt', parsed.jwt)
-      console.log(window.localStorage)
-      this.props.setCurrentUser(parsed.user)
+      // debugger
+      if (parsed.user) {
+        window.localStorage.setItem('jwt', parsed.jwt)
+        console.log(window.localStorage)
+        this.props.setCurrentUser(parsed.user)
+      }
     })
   }
 
@@ -58,9 +64,11 @@ class LoginPage extends Component {
     })
     .then(resp => resp.json())
     .then(parsed => {
-      window.localStorage.setItem('jwt', parsed.jwt)
-      console.log(window.localStorage)
-      this.props.setCurrentUser(parsed.user)
+      if (parsed.user) {
+        window.localStorage.setItem('jwt', parsed.jwt)
+        console.log(window.localStorage)
+        this.props.setCurrentUser(parsed.user)
+      }
     })
   }
 

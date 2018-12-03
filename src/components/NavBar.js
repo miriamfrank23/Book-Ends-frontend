@@ -4,16 +4,18 @@ import SearchBar from './SearchBar'
 
 const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, currentUser, showLoginPage, logOut, showUserProfile }) => {
 
+// debugger
 
     return (
       <div className='navBar'>
-      <h1 id='logo'>
+      <div id='logo'>
+        <i className='fas fa-book-open'></i>
         Book Ends
-      </h1>
+      </div>
         {currentBookId ?
           <button id='navBarButton'
           onClick={noBookSelected}>
-            Back to browse 
+            Back to browse
           </button> :
           <SearchBar
             captureInput={captureInput}
@@ -21,21 +23,21 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
           />
         }
         {currentUser ? <div className='profileIcon'>
+          <h3>
+          {`Welcome ${currentUser.first_name}!`}
+          </h3>
           <div id='profileButtons'>
-            <h3>
-            {`Welcome, ${currentUser.user.first_name}!`}
-            </h3>
             <button onClick={showUserProfile}>
               View my profile
             </button>
             <button onClick={logOut}>
-            Sign out
+              Sign out
             </button>
           </div>
         </div>
         :
         <div onClick={showLoginPage}>
-        Sign in
+          Sign in
         </div>}
       </div>
     )

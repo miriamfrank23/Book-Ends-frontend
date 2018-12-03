@@ -1,27 +1,65 @@
-import React from 'react'
+import React, { Component } from 'react'
+const axios = require('axios')
 
-const Comment = ({ allComments, currentUser }) => {
 
-  const deleteComment = (comment) => {
+class Comment extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      users: []
+    }
+  }
+
+  componentWillMount() {
+    this.fetchUsers()
+  }
+
+  fetchUsers = () => {
+    console.log('start fetching users')
+    axios.get('http://localhost:4000/api/v1/users', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+      .then(resp => {
+        console.log('before setting users');
+        this.setState({
+          users: resp.data
+        }, () => {
+          console.log(this.state.users);
+        })
+      })
+  }
+
+  deleteComment = (comment) => {
     debugger
   }
 
-
-
-  const showAllComments = () => {
-    return allComments.map(comment => {
-      return <div className='comment' key={comment.id}> {comment.user_id}: {comment.text}
-      {comment.user_id === currentUser.user.id ? <div><button>Edit</button><button onClick={() => deleteComment(comment)}>Delete</button></div> : null}
-      </div>
+  findUser = () => {
+    // debugger
+    return this.state.users.find(user => {
+      return this.props.comment.user_id === user.id
     })
   }
 
+  renderComment = () => {
+    if (this.state.users.length > 0) {
+      return <div> {this.findUser().first_name}: {this.props.comment.text}
+      {this.props.comment.user_id === this.props.currentUser.id ? <div><button>Edit</button><button onClick={() => this.deleteComment(this.props.comment)}>Delete</button></div> : null}
+      </div>
+    } else {
+      return 'Loading comment'
+    }
+  }
 
+render () {
   return (
     <div>
-    {showAllComments()}
+      {this.renderComment()}
     </div>
   )
+}
 
 }
 

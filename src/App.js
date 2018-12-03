@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import './App.css'
 import BooksBody from './components/BooksBody'
 import NavBar from './components/NavBar'
@@ -27,27 +27,51 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.resetCurrentUser()
+    this.setCurrentUser(this.state.currentUser)
+    // this.resetCurrentUser()
     this.fetchBooks()
   }
 
-  // componentWillUnmount() {
-  //   debugger
-  //   localStorage.setItem('books', JSON.stringify(this.state.fetchedBooks))
-  // }
+  fetchBooks = () => {
+    console.log('start fetching books')
+    axios.get('http://localhost:4000/api/v1/books', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(resp => {
+      // debugger
+      this.setState({
+        fetchedBooks: resp.data
+      }, () => {
+        console.log('end fetching books')
+        this.defaultSort()
+        console.log('sorted')
+      })
+    })
+  }
 
-  // componentWillMount() {
-  //   // debugger
-  //   const rehydrate = JSON.parse(localStorage.getItem('books'))
-  //   this.setState(rehydrate)
+  // fetchUsers = () => {
+  //   console.log('start fetching users')
+  //   axios.get('http://localhost:4000/api/v1/users', {
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem('jwt')}`
+  //     }
+  //   })
+  //   .then(resp => {
+  //     this.setState({
+  //       fetchedUsers: resp.data
+  //     }, () => {
+  //       console.log('end fetching users')
+  //     })
+  //   })
   // }
-
 
 
   setCurrentUser = (user) => {
-    this.setState({
-      currentUser: user
-    })
+      this.setState({
+        currentUser: user
+      })
   }
 
   logOut = () => {
@@ -60,39 +84,24 @@ class App extends Component {
   }
 
 
-  fetchBooks = () => {
-    console.log('start fetching books')
-    axios.get('http://localhost:4000/api/v1/books', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('jwt')}`
-      }
-    })
-    .then(resp => {
-      // debugger
-        this.setState({
-          fetchedBooks: resp.data
-        }, () => {
-        console.log('end fetching books')
-        this.defaultSort()
-        console.log('sorted')
-      })
-    })
-  }
 
   resetCurrentUser = () => {
     console.log(localStorage.getItem('jwt'))
-    fetch('http://localhost:4000/api/v1/profile', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`
-      }
-    })
-    .then(resp => resp.json())
-    .then(data => {
-      this.setState({
-        currentUser: data
+    if (localStorage.getItem('jwt')) {
+      fetch('http://localhost:4000/api/v1/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }
       })
-    })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.first_name)
+        this.setState({
+          currentUser: data
+        })
+      })
+    }
   }
 
   nextPage = () => {
@@ -309,7 +318,8 @@ class App extends Component {
   intialRender = () => {
     if(!this.state.currentUser){
       return(
-        <LoginPage setCurrentUser={this.setCurrentUser}/>
+        <LoginPage setCurrentUser={this.setCurrentUser}
+        resetCurrentUser={this.resetCurrentUser}/>
       )
     } else if (this.state.currentUser && this.state.showingUserProfile) {
       return (
@@ -317,6 +327,7 @@ class App extends Component {
         backToIndex={this.backToIndex}/>
       )
     } else if(this.state.currentUser && !this.state.currentBookId) {
+      // debugger
       return(
       <div>
       <NavBar

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Comment from './Comment'
+import AllComments from './AllComments'
 
 
 
@@ -51,7 +51,7 @@ class BookShow extends Component {
     fetch(`http://localhost:4000/api/v1/comments`, {
       method: 'POST',
       body: JSON.stringify({
-        user_id: currentUser.user.id,
+        user_id: currentUser.id,
         book_id: findCurrentBook().id,
         text: this.state.comment
       }),
@@ -85,42 +85,46 @@ class BookShow extends Component {
     const { findCurrentBook } = this.props
     // console.log(this.state.allComments)
     return (
-      <div className='bookShow'>
-      <div className='bookDetails'>
-        {findCurrentBook().thumbnail ?
-          <img src={findCurrentBook().thumbnail} alt=''
-          className='showImage'/>
-          :
-          <img  src={'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'} alt=''
-          className='showImage'/>
-        }
-        <div>
-        Title: <br/>{findCurrentBook().title}<br/><br/>
-        Written by: {this.printOutAuthors()}<br/>
-        Description: <br/>{findCurrentBook().description}<br/><br/>
-        Publisher: <br/>{findCurrentBook().publisher}<br/><br/>
-        Date published: <br/>{findCurrentBook().date_published}<br/><br/>
-        Page count: <br/>{findCurrentBook().page_count}<br/>
+      <div>
+        <div className='trees'>
         </div>
-        <button>
-        I read this book
-        </button>
-        <br/>
-        Leave a comment:
-        <input
-        value={this.state.comment}
-        onChange={this.captureComment}/>
-        <button
-        onClick={this.createComment}>
-        Submit
-        </button>
-        </div>
-        <div className='commentContainer'>
+        <div className='bookShow'>
+          <div className='showImageContainer'>
+            <img src={findCurrentBook().thumbnail} alt=''
+            className='showImage'/>
+          </div>
+          <div className='bookDetails'>
+            Title: <br/>{findCurrentBook().title}<br/><br/>
+            Written by: {this.printOutAuthors()}<br/>
+            Description: <br/>{findCurrentBook().description}<br/><br/>
+            Publisher: <br/>{findCurrentBook().publisher}<br/><br/>
+            Date published: <br/>{findCurrentBook().date_published}<br/><br/>
+            Page count: <br/>{findCurrentBook().page_count}
+          </div>
+          <div className='commentsSection'>
+          <button>
+            I read this book
+          </button>
+          <br/>
+            Leave a comment:
+          <input
+          value={this.state.comment}
+          onChange={this.captureComment}/>
+          <button
+          onClick={this.createComment}>
+            Submit
+          </button>
+
           {this.state.allComments.length > 0 ?
-            <Comment allComments={this.state.allComments}
-            currentUser={this.props.currentUser}/> :
+            <AllComments allComments={this.state.allComments}
+            currentUser={this.props.currentUser}
+            fetchedUsers={this.props.fetchedUsers}/> :
             null
           }
+
+          </div>
+        </div>
+        <div className='trees'>
         </div>
       </div>
     )
