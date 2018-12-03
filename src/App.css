@@ -67,7 +67,6 @@
 .bookDetails {
   /* margin: 30px; */
   /* width: 1000px; */
-  /* font-weight: bold; */
   word-wrap: normal;
 }
 
@@ -154,7 +153,7 @@ select {
 .comment {
   border-radius: 2px;
   border: solid 1px;
-  border-color: #1F3044;
+  border-color: #8f97a1;
   margin: 5px;
   padding: 5px;
   width: 500px;
@@ -202,13 +201,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #userProfileButton {
-  margin: 25px;
+  margin-top: 75px;
+}
+
+.centerButton {
+  display: flex;
+  justify-content: center;
+  height: 150px;
 }
 
 #mysteryImage {
-  /* background-image: url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg'); */
   height: 600px;
-
   background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
    url('https://wetshutter.com/wp-content/uploads/2018/05/1569-_MG_1268-Pano.jpg') no-repeat;
   /* width: 100%; */

@@ -12,17 +12,18 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
         <i className='fas fa-book-open'></i>
         Book Ends
       </div>
-        {currentBookId ?
-          <button id='navBarButton'
-          onClick={noBookSelected}>
-            Back to browse
-          </button> :
+        {currentBookId ?        
+            <button id='navBarButton'
+            onClick={noBookSelected}>
+              Back to browse
+            </button>
+           :
           <SearchBar
             captureInput={captureInput}
             searchInput={searchInput}
           />
         }
-        {currentUser ? <div className='profileIcon'>
+        {currentUser && !currentBookId ? <div className='profileIcon'>
           <h3>
           {`Welcome ${currentUser.first_name}!`}
           </h3>
@@ -36,8 +37,10 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
           </div>
         </div>
         :
-        <div onClick={showLoginPage}>
-          Sign in
+        <div id='profileButtons'>
+          <button onClick={showUserProfile}>
+            View my profile
+          </button>
         </div>}
       </div>
     )

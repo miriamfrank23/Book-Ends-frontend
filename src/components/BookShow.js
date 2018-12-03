@@ -21,7 +21,6 @@ class BookShow extends Component {
     const allNewComments = this.state.allComments.filter(eachComment => {
       return comment.id !== eachComment.id
     })
-    debugger
     this.setState({
       allComments: allNewComments
     })
@@ -63,11 +62,6 @@ class BookShow extends Component {
       book_id: findCurrentBook().id,
       text: this.state.comment
     }
-    const allNewComments = this.state.allComments.concat(newComment)
-
-    this.setState({
-      allComments: allNewComments
-    })
 
     //send new comment to db
     console.log('creating comment')
@@ -80,12 +74,14 @@ class BookShow extends Component {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
-    .then(resp => {
-      console.log(resp);
-      this.setState({
-        comment: ''
+    .then(resp => resp.json())
+    .then(json => {
+      const allNewComments = this.state.allComments.concat(json)
+        this.setState({
+          comment: '',
+          allComments: allNewComments
+        })
       })
-    })
   }
 
   printOutAuthors = () => {
@@ -149,9 +145,3 @@ class BookShow extends Component {
 
 
 export default BookShow
-
-
-
-// <button>
-// I want to read this book
-// </button>

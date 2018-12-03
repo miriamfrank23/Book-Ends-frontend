@@ -14,25 +14,14 @@ const UserProfile = ({ currentUser, backToIndex }) => {
     }
   }
 
-  // const showUserBooks = () => {
-  //   if (currentUser.user.books.length > 0) {
-  //     return currentUser.user.books.map(book => {
-  //       return <div key={book.id}>
-  //       <img alt='' src={book.thumbnail}/><br/>
-  //       {book.title}
-  //       </div>
-  //     })
-  //   } else {
-  //     return "You haven't added any read books yet"
-  //   }
-  // }
-
 
   return (
     <div>
+      <div className='centerButton'>
       <button onClick={backToIndex} id='userProfileButton'>
         Back to browse
       </button>
+      </div>
       <div className='trees'>
       </div>
       <div className='userProfile'>

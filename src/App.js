@@ -49,22 +49,6 @@ class App extends Component {
     })
   }
 
-  // fetchUsers = () => {
-  //   console.log('start fetching users')
-  //   axios.get('http://localhost:4000/api/v1/users', {
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem('jwt')}`
-  //     }
-  //   })
-  //   .then(resp => {
-  //     this.setState({
-  //       fetchedUsers: resp.data
-  //     }, () => {
-  //       console.log('end fetching users')
-  //     })
-  //   })
-  // }
-
 
   setCurrentUser = (user) => {
       this.setState({
@@ -349,7 +333,8 @@ class App extends Component {
           {this.pageRender()}
         </div>
       )
-    } else {
+    }
+    else {
       return (
         <div>
         <NavBar
@@ -359,6 +344,8 @@ class App extends Component {
           searchInput={this.state.searchInput}
           currentUser={this.state.currentUser}
           showLoginPage={this.showLoginPage}
+          logOut={this.logOut}
+          showUserProfile={this.showUserProfile}
         />
         {this.pageRender()}
         </div>
