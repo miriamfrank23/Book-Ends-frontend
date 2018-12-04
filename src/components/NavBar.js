@@ -12,7 +12,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
         <i className='fas fa-book-open'></i>
         Book Ends
       </div>
-        {currentBookId ?        
+        {currentBookId ?
             <button id='navBarButton'
             onClick={noBookSelected}>
               Back to browse
@@ -38,6 +38,9 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
         </div>
         :
         <div id='profileButtons'>
+          <h3>
+            {`Welcome ${currentUser.first_name}!`}
+          </h3>
           <button onClick={showUserProfile}>
             View my profile
           </button>

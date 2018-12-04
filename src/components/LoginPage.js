@@ -62,13 +62,22 @@ class LoginPage extends Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(resp => resp.json())
+    .then(response => {
+      if (!response.ok) {
+          window.alert('Invalid username or password')
+       } else {
+         return response.json()
+       }
+     })
     .then(parsed => {
       if (parsed.user) {
         window.localStorage.setItem('jwt', parsed.jwt)
         console.log(window.localStorage)
         this.props.setCurrentUser(parsed.user)
       }
+    })
+    .catch(error => {
+      console.log(error)
     })
   }
 
