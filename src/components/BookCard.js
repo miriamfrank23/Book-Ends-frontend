@@ -14,75 +14,75 @@ const BookCard = ({ book, setCurrentBook }) => {
     switch (book.average_rating) {
     case 1:
       return <div>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star-o fa-lg" ></span>
-        <span className="fa fa-star-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="far fa-star fa-lg" ></i>
+        <i className="far fa-star fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
       </div>
     case 1.5:
       return <div>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star-half-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star-half-alt fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
       </div>
     case 2:
     return <div>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star-o fa-lg"></span>
-      <span className="fa fa-star-o fa-lg"></span>
-      <span className="fa fa-star-o fa-lg"></span>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="far fa-star fa-lg"></i>
+      <i className="far fa-star fa-lg"></i>
+      <i className="far fa-star fa-lg"></i>
     </div>
     case 2.5:
       return  <div>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star-half-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star-half-alt fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
       </div>
     case 3:
     return <div>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star-o fa-lg"></span>
-      <span className="fa fa-star-o fa-lg"></span>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="far fa-star fa-lg"></i>
+      <i className="far fa-star fa-lg"></i>
     </div>
     case 3.5:
       return <div>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star-half-o fa-lg"></span>
-        <span className="fa fa-star-o fa-lg"></span>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star-half-alt fa-lg"></i>
+        <i className="far fa-star fa-lg"></i>
       </div>
     case 4:
     return <div>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star-o fa-lg"></span>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="far fa-star fa-lg"></i>
     </div>
     case 4.5:
       return <div>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star checked fa-lg"></span>
-        <span className="fa fa-star-half-o fa-lg"></span>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star checked fa-lg"></i>
+        <i className="fas fa-star-half-alt fa-lg"></i>
       </div>
     case 5:
     return <div>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
-      <span className="fa fa-star checked fa-lg"></span>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
+      <i className="fas fa-star checked fa-lg"></i>
     </div>
     default:
       return 'hi';
