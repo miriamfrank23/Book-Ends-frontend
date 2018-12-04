@@ -1,6 +1,8 @@
 #logo {
   font-size: 40px;
   font-weight: bold;
+  padding-bottom: 80px;
+  padding-left: 10px;
 }
 
 #logo:hover {
@@ -35,7 +37,7 @@
 }
 
 .bookThumbnail:hover {
-  box-shadow: 3px 3px 3px 3px #8f97a1;    
+  box-shadow: 3px 3px 3px 3px #8f97a1;
 }
 
 .bookThumbnail {
@@ -51,6 +53,8 @@
   align-items: center;
   background: white;
   height: 150px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .bookShow {
@@ -175,17 +179,18 @@ h1, h2, h3, h4, h5, h6 {
   color: #1F3044;
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
-  /* margin: 100px; */
 }
 
 #loginForm {
   margin-right: 100px;
   margin-left: 100px;
+  margin-bottom: 300px;
 }
 
 #signupForm {
   margin-right: 100px;
+  margin-bottom: 300px;
+
 }
 
 .profileIcon {
@@ -220,10 +225,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .loginImage {
-  height: 900px;
+  height: 1500px;
   width: 100%;
   background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
-  url('https://c1.staticflickr.com/6/5524/30628679132_ca19d26013_b.jpg')no-repeat;
+  url('https://images.pexels.com/photos/753575/pexels-photo-753575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')no-repeat;
   background-size: 100% 100%;
 
 }
@@ -236,11 +241,14 @@ h1, h2, h3, h4, h5, h6 {
   url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg');
 }
 
-/* #imageCollage {
-  display: flex;
-  flex-direction: column;
-} */
-
 .checked, .half-o, .fa{
   color: #1F3044;
+}
+
+.loginButtons {
+  font-weight: bold;
+}
+
+.loginButtons:hover {
+  color: #8f97a1;
 }

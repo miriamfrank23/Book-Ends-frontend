@@ -99,7 +99,7 @@ class LoginPage extends Component {
       </h3>
       <input type="password" name="password" onChange={this.controlledForm}/>
       <br/>
-      <input type="submit" value="Sign in" />
+      <input type="submit" value="Sign in" className='loginButtons'/>
       </form>
 
       <form onSubmit={this.createNewUser} id='signupForm'>
@@ -123,7 +123,7 @@ class LoginPage extends Component {
       </h3>
       <input type="password" name="password" onChange={this.controlledForm}/>
       <br/>
-      <input type="submit" value="Sign up"/>
+      <input type="submit" value="Sign up" className='loginButtons'/>
       </form>
 
       </div>
