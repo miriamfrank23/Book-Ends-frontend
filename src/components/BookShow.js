@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import AllComments from './AllComments'
 
 
-
 class BookShow extends Component {
 
   constructor () {
     super()
     this.state = {
       comment: '',
-      allComments: []
+      allComments: [],
+      commentEditing: null
     }
   }
 
@@ -23,6 +23,15 @@ class BookShow extends Component {
     })
     this.setState({
       allComments: allNewComments
+    })
+  }
+
+  editComment = (comment) => {
+    this.setState({
+      comment: comment.text,
+      commentEditing: comment
+    }, () => {
+      console.log(this.state.comment, this.state.commentEditing)
     })
   }
 
@@ -55,33 +64,64 @@ class BookShow extends Component {
   }
 
   createComment = () => {
-    const { findCurrentBook, currentUser } = this.props
-    // optimistically render
-    const newComment =  {
-      user_id: currentUser.id,
-      book_id: findCurrentBook().id,
-      text: this.state.comment
-    }
+    //newComment
+    if (!this.state.commentEditing) {
+      const { findCurrentBook, currentUser } = this.props
 
-    //send new comment to db
-    console.log('creating comment')
-    fetch(`http://localhost:4000/api/v1/comments`, {
-      method: 'POST',
-      body: JSON.stringify(newComment),
-      headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      const newComment =  {
+        user_id: currentUser.id,
+        book_id: findCurrentBook().id,
+        text: this.state.comment
       }
-    })
-    .then(resp => resp.json())
-    .then(json => {
-      const allNewComments = this.state.allComments.concat(json)
+      //send new comment to db
+      console.log('creating comment')
+      fetch(`http://localhost:4000/api/v1/comments`, {
+        method: 'POST',
+        body: JSON.stringify(newComment),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }
+      })
+      .then(resp => resp.json())
+      .then(json => {
+        const allNewComments = this.state.allComments.concat(json)
         this.setState({
           comment: '',
           allComments: allNewComments
         })
       })
+    } else {
+      //editing comment
+      console.log('editing comment')
+      fetch(`http://localhost:4000/api/v1/comments/${this.state.commentEditing.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          text: this.state.comment
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        }
+      })
+      .then(resp => {
+        return resp.json()
+      })
+      .then(editedComment => {
+        // debugger
+        const commentRemoved = this.state.allComments.filter(comment => {
+          return comment.id !== editedComment.id
+        })
+        const newComments = commentRemoved.concat(editedComment)
+        this.setState({
+          comment: '',
+          allComments: newComments,
+          commentEditing: null
+        })
+      })
+    }
   }
 
   printOutAuthors = () => {
@@ -94,7 +134,7 @@ class BookShow extends Component {
 
   render () {
     const { findCurrentBook } = this.props
-    // console.log(this.state.allComments)
+  
     return (
       <div>
         <div className='trees'>
@@ -130,7 +170,9 @@ class BookShow extends Component {
             <AllComments allComments={this.state.allComments}
             currentUser={this.props.currentUser}
             fetchedUsers={this.props.fetchedUsers}
-            deleteComments={this.deleteComments}/> :
+            deleteComments={this.deleteComments}
+            editComment={this.editComment}/>
+            :
             null
           }
 
