@@ -1,7 +1,8 @@
 import React from 'react'
 import BookCard from './BookCard'
 
-const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook }) => {
+
+const BooksBody = ({ fetchedBooks, searchInput, setCurrentBook, captureInput }) => {
 
   const mapThroughBooks = () => {
     return fetchedBooks.map(book => {

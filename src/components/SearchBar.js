@@ -5,7 +5,7 @@ const SearchBar = ({ captureInput, searchInput }) => {
 
 
     return (
-      <p>
+      <p id='searchBar'>
         <input onChange={(e) => captureInput(e.target.value)}
         placeholder='Search for books here'
         value={searchInput}/>

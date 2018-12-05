@@ -2,18 +2,18 @@ import React from 'react'
 import Books from '../images/books.svg'
 
 
-const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) => {
+const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook }) => {
 
 
-  const showUserComments = () => {
-    if (currentUser.comments.length > 0) {
-      return currentUser.comments.map(comment => {
-        return <div key={comment.id}>{comment.text}</div>
-      })
-    } else {
-      return "You haven't commented on any books yet"
-    }
-  }
+  // const showUserComments = () => {
+  //   if (currentUser.comments.length > 0) {
+  //     return currentUser.comments.map(comment => {
+  //       return <div key={comment.id}>{comment.text}</div>
+  //     })
+  //   } else {
+  //     return "You haven't commented on any books yet"
+  //   }
+  // }
 
   const showUserBooks = () => {
     if (currentUser.user_books.length > 0) {
@@ -62,24 +62,37 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) 
     backToIndex()
   }
 
+  const showNumberOfBooksRead = () => {
+    if (!currentUser.user_books.length) {
+      return null
+    } else if (currentUser.user_books.length === 1) {
+      return <h3>
+      You've read 1 book!
+      </h3>
+    } else {
+      return <h3>
+      You've read {currentUser.user_books.length} books!
+      </h3>
+    }
+  }
+
+  const showNumberOfWishBooks = () => {
+    if (!currentUser.wish_books.length) {
+      return null
+    } else if (currentUser.wish_books.length === 1) {
+      return <h3>
+      You have 1 book on your wishlist!
+      </h3>
+    } else {
+      return <h3>
+      You have {currentUser.wish_books.length} books on your wishlist!
+      </h3>
+    }
+  }
+
 
   return (
     <div>
-      <div id='logo'>
-        <div>
-          Book
-        </div>
-        <img alt='' src={Books}
-        id='logoBook'/>
-        <div>
-         Ends
-        </div>
-        </div>
-      <div className='centerButton'>
-      <button onClick={backToIndex} id='userProfileButton'>
-        Back to browse
-      </button>
-      </div>
       <div className='trees'>
       </div>
       <div className='userProfile'>
@@ -88,37 +101,18 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) 
           Welcome {currentUser.first_name}!
         </h2>
 
-        {currentUser.user_books.length > 0 ?
-          <h3>
-          You've read {currentUser.user_books.length} books!
-          </h3> :
-          null
-        }
+        {showNumberOfBooksRead()}
         <div className='outerUserBooksContainer'>
         {showUserBooks()}
         </div><br/><br/>
 
 
-        {currentUser.wish_books.length > 0 ?
-        <h3>
-        You have {currentUser.wish_books.length} books on your wishlist!
-        </h3> :
-        null
-        }
+        {showNumberOfWishBooks()}
         <div className='outerUserBooksContainer'>
-        {showWishBooks()}
+          {showWishBooks()}
         </div><br/><br/>
 
-        {currentUser.comments.length > 0 ?
-        <h3>
-        You've commented {currentUser.comments.length} times!
-        </h3> :
-        null
-        }
-        {showUserComments()}<br/>
-      </div>
-      <div className='trees'>
-      </div>
+        </div>
     </div>
   )
 

@@ -6,6 +6,8 @@ import BookShow from './components/BookShow'
 import UserProfile from './components/UserProfile'
 import LoginPage from './components/LoginPage'
 import MysteryImage from './components/MysteryImage'
+import SearchBar from './components/SearchBar'
+
 const axios = require('axios')
 
 
@@ -227,11 +229,14 @@ class App extends Component {
       return <BooksBody
       setCurrentBook={this.setCurrentBook}
       fetchedBooks={this.filterThroughBooks()}
-      searchInput={this.state.searchInput} />
+      searchInput={this.state.searchInput}
+      captureInput={this.captureInput}
+      searchInput={this.state.searchInput}/>
     } else {
       return <BooksBody
       setCurrentBook={this.setCurrentBook}
       fetchedBooks={this.sliceBooks()}
+      captureInput={this.captureInput}
       searchInput={this.state.searchInput} />
     }
   }
@@ -240,6 +245,8 @@ class App extends Component {
   pageRender = () => {
     if (!this.state.currentBookId && this.state.bookStart && (this.state.bookEnd !== this.state.fetchedBooks.length)) {
       return <div className='pageBody'>
+      <SearchBar captureInput={this.captureInput}
+      searchInput={this.state.searchInput}/>
       <div className='pageButtons'>
         <button onClick={this.firstPage}>
         First page
@@ -260,6 +267,8 @@ class App extends Component {
       </div>
     } else if (!this.state.currentBookId && !this.state.bookStart) {
       return <div className='pageBody'>
+      <SearchBar captureInput={this.captureInput}
+      searchInput={this.state.searchInput}/>
       <div className='pageButtons'>
         <button onClick={this.nextPage}>
         Next Page
@@ -274,6 +283,8 @@ class App extends Component {
       </div>
     } else if (!this.state.currentBookId && this.state.bookEnd === this.state.fetchedBooks.length) {
       return <div className='pageBody'>
+      <SearchBar captureInput={this.captureInput}
+      searchInput={this.state.searchInput}/>
       <div className='pageButtons'>
         <button onClick={this.firstPage}>
         First page
@@ -304,11 +315,25 @@ class App extends Component {
       )
     } else if (this.state.currentUser && this.state.showingUserProfile && !this.state.currentBookId) {
       return (
-        <UserProfile currentUser={this.state.currentUser}
-        backToIndex={this.backToIndex}
-        fetchedBooks={this.state.fetchedBooks}
-        setCurrentBook={this.setCurrentBook}
-        />
+        <div>
+          <NavBar
+            captureInput={this.captureInput}
+            currentBookId={this.state.currentBookId}
+            noBookSelected={this.noBookSelected}
+            searchInput={this.state.searchInput}
+            currentUser={this.state.currentUser}
+            showLoginPage={this.showLoginPage}
+            logOut={this.logOut}
+            showUserProfile={this.showUserProfile}
+            backToIndex={this.backToIndex}
+            showingUserProfile={this.state.showingUserProfile}
+            />
+          <UserProfile currentUser={this.state.currentUser}
+            backToIndex={this.backToIndex}
+            fetchedBooks={this.state.fetchedBooks}
+            setCurrentBook={this.setCurrentBook}
+          />
+        </div>
       )
     } else if(this.state.currentUser && !this.state.currentBookId) {
       return(
@@ -322,6 +347,8 @@ class App extends Component {
         showLoginPage={this.showLoginPage}
         logOut={this.logOut}
         showUserProfile={this.showUserProfile}
+        backToIndex={this.backToIndex}
+        showingUserProfile={this.state.showingUserProfile}
         />
         <MysteryImage />
           <select onChange={this.sortBooks} type="select" name="select">
@@ -348,6 +375,8 @@ class App extends Component {
           showLoginPage={this.showLoginPage}
           logOut={this.logOut}
           showUserProfile={this.showUserProfile}
+          backToIndex={this.backToIndex}
+          showingUserProfile={this.state.showingUserProfile}
         />
         {this.pageRender()}
         </div>

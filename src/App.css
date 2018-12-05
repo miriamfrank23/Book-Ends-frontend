@@ -3,7 +3,7 @@
   font-weight: bold;
   display: flex;
   margin-bottom: 90px;
-  margin-left: 10px;
+  margin-left: 30px;
 }
 
 #logo:hover {
@@ -71,7 +71,8 @@
   padding-bottom: 50px;
   display: flex;
   align-items: center;
-  height: 600px;
+  justify-content: space-around;
+  height: auto;
 }
 
 .bookDetails {
@@ -81,7 +82,7 @@
 }
 
 .showImageContainer {
-  width: 400px;
+  /* width: 400px; */
   margin: 25px;
 }
 
@@ -92,7 +93,7 @@
   margin: 30px;
 }
 
-.userProfile {
+.file {
   margin: 50px;
   padding: 20px;
   height: auto;
@@ -119,15 +120,16 @@ input {
   background-color: white;
   font-size: 20px;
   color: #1F3044;
+  /* margin-right: 500px; */
 }
 
 button {
   border-radius: 2px;
-  margin: 15px;
+  margin: 10px;
   width: 200px;
   height: 30px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Roboto Mono', monospace;
   color: #1F3044;
   word-wrap: normal;
@@ -138,9 +140,10 @@ button:hover {
 }
 
 select {
-  margin: 25px;
+  margin-top: 30px;
+  margin-left: 30px;
   height: 35px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   font-family: 'Roboto Mono', monospace;
   color: #1F3044;
@@ -148,8 +151,7 @@ select {
 
 #navBarButton {
   border-radius: 2px;
-  margin-top: 30px;
-  margin-left: 30px;
+  margin: 40px;
   height: 30px;
   width: 200px;
 }
@@ -185,23 +187,25 @@ h1, h2, h3, h4, h5, h6 {
   color: #1F3044;
   display: flex;
   align-items: flex-end;
+  justify-content: flex-start;
 }
 
 #loginForm {
-  margin-right: 100px;
-  margin-left: 100px;
+  margin-right: 150px;
+  margin-left: 150px;
   margin-bottom: 300px;
 }
 
 #signupForm {
-  margin-right: 100px;
+  margin-right: 150px;
   margin-bottom: 300px;
-
 }
 
 .profileIcon {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-right: 30px;
 }
 
 .userShowBook:hover {
@@ -212,8 +216,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
   width: 160px;
   height: 240px;
-  margin-left: 70px;
-  margin-right: 70px;
   margin-bottom: 10px;
 }
 
@@ -221,7 +223,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 350px;
+  width: 300px;
   margin: 15px;
 }
 
@@ -233,7 +235,9 @@ h1, h2, h3, h4, h5, h6 {
 #profileButtons {
   display: flex;
   padding-right: 25px;
+  /* padding-left: 100px; */
   flex-direction: column;
+  align-items: center;
 }
 
 .centerButton {
@@ -248,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
    url('https://wetshutter.com/wp-content/uploads/2018/05/1569-_MG_1268-Pano.jpg') no-repeat;
   /* width: 100%; */
   background-size: 100% 100%;
-  margin-top: 25px;
+  margin-top: 30px;
   /* background-attachment: fixed; */
 }
 
@@ -264,7 +268,7 @@ h1, h2, h3, h4, h5, h6 {
 .trees {
   margin-top: 30px;
   width: 100%;
-  height: 260px;
+  height: 250px;
   background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
   url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg');
 }
@@ -288,4 +292,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .wantToRead {
   width: 300px;
+}
+
+.readButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userProfilePage {
+  padding-top: 20px;
+  padding-botton: 5px;
+}
+
+.userProfile {
+  margin: 20px;
+}
+
+#searchBar {
+  margin-bottom: 15px;
+}
+
+.pageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -219,7 +219,7 @@ class BookShow extends Component {
     } else if (this.checkIfUserWishlist()) {
       return <div>You added this book to your wishlist!</div>
     } else {
-      return <div>
+      return <div className='readButtonsContainer'>
       <button onClick={this.addToUserBooks}>
       I read this book
       </button>
@@ -277,8 +277,6 @@ class BookShow extends Component {
           }
 
           </div>
-        </div>
-        <div className='trees'>
         </div>
       </div>
     )
