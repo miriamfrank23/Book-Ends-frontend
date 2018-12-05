@@ -1,4 +1,6 @@
 import React from 'react'
+import Books from '../images/books.svg'
+
 
 const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) => {
 
@@ -42,6 +44,16 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) 
 
   return (
     <div>
+      <div id='logo'>
+        <div>
+          Book
+        </div>
+        <img alt='' src={Books}
+        id='logoBook'/>
+        <div>
+         Ends
+        </div>
+        </div>
       <div className='centerButton'>
       <button onClick={backToIndex} id='userProfileButton'>
         Back to browse

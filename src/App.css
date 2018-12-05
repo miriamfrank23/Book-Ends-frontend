@@ -11,9 +11,10 @@
 }
 
 #logoBook {
-  height: 75px;
-  margin-right: 5px;
-  margin-left: 5px;
+  height: 50px;
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-top: 5px;
 }
 
 .fa-book-open {
@@ -94,7 +95,7 @@
 .userProfile {
   margin: 50px;
   padding: 20px;
-  height: 600px;
+  height: auto;
   background: white;
 }
 
@@ -221,10 +222,12 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   align-items: center;
   width: 350px;
+  margin: 15px;
 }
 
 .outerUserBooksContainer {
   display: flex;
+  flex-wrap: wrap;
 }
 
 #profileButtons {
@@ -233,14 +236,10 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
 }
 
-#userProfileButton {
-  margin-top: 100px;
-}
-
 .centerButton {
   display: flex;
   justify-content: center;
-  height: 150px;
+  height: auto;
 }
 
 #mysteryImage {

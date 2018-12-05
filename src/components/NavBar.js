@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from './SearchBar'
+import Books from '../images/books.svg'
 
 
 const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, currentUser, showLoginPage, logOut, showUserProfile }) => {
@@ -12,7 +13,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
         <div>
           Book
         </div>
-        <img alt='' src='http://animalcare.umich.edu/sites/default/files/acu-cont-ed-icon_0.png'
+        <img alt='' src={Books}
         id='logoBook'/>
         <div>
          Ends
