@@ -173,6 +173,8 @@ class BookShow extends Component {
   }
 
 
+
+
   render () {
     const { findCurrentBook } = this.props
 

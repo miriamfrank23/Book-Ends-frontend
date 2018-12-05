@@ -21,8 +21,7 @@ class App extends Component {
       bookStart: 0,
       bookEnd: 16,
       currentUser: null,
-      showingUserProfile: false,
-      booksLoading: true
+      showingUserProfile: false
     }
   }
 

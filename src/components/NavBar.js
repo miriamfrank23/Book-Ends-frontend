@@ -4,7 +4,6 @@ import SearchBar from './SearchBar'
 
 const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, currentUser, showLoginPage, logOut, showUserProfile }) => {
 
-// debugger
 
     return (
       <div className='navBar'>
@@ -45,7 +44,10 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
           <h3>
             {`Welcome ${currentUser.first_name}!`}
           </h3>
-          <button onClick={showUserProfile}>
+          <button onClick={() => {
+            showUserProfile()
+            noBookSelected()
+          }}>
             View my profile
           </button>
         </div>}
