@@ -36,6 +36,27 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) 
     }
   }
 
+  const showWishBooks = () => {
+    if (currentUser.wish_books.length > 0) {
+
+      const bookIds = currentUser.wish_books.map(book => {
+        return book.book_id
+      })
+
+      const readBooks = fetchedBooks.filter(book => bookIds.includes(book.id))
+
+      return readBooks.map(book => {
+        return <div key={book.id} className='userShowBookContainer'>
+          <img alt='' src={book.thumbnail} className='userShowBook' onClick={() => goToBookShow(book.id)}/>
+          {book.title}
+        </div>
+      })
+
+    } else {
+      return "You haven't added any books to your wishlist yet"
+    }
+  }
+
   const goToBookShow = (id) => {
     setCurrentBook(id)
     backToIndex()
@@ -75,6 +96,17 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook}) 
         }
         <div className='outerUserBooksContainer'>
         {showUserBooks()}
+        </div><br/><br/>
+
+
+        {currentUser.wish_books.length > 0 ?
+        <h3>
+        You have {currentUser.wish_books.length} books on your wishlist!
+        </h3> :
+        null
+        }
+        <div className='outerUserBooksContainer'>
+        {showWishBooks()}
         </div><br/><br/>
 
         {currentUser.comments.length > 0 ?

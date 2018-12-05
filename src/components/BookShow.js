@@ -163,6 +163,38 @@ class BookShow extends Component {
     })
   }
 
+  addToWishBooks = () => {
+    const { findCurrentBook, currentUser, setCurrentUser } = this.props
+
+    //optimistically render
+    const addedBookToArray = currentUser.wish_books.concat({
+      book_id: findCurrentBook().id,
+      user_id: currentUser.id
+    })
+    currentUser.wish_books = addedBookToArray
+
+    setCurrentUser(currentUser)
+
+    //patch to db
+    // debugger
+    fetch(`http://localhost:4000/api/v1/wish_books`, {
+      method: 'POST',
+      body: JSON.stringify({
+        user_id: currentUser.id,
+        book_id: findCurrentBook().id
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(json => {
+      console.log(json)
+    })
+  }
+
   checkIfUserHasRead = () => {
     const { findCurrentBook, currentUser } = this.props
     if (currentUser.user_books.length > 0) {
@@ -172,7 +204,31 @@ class BookShow extends Component {
     }
   }
 
+  checkIfUserWishlist = () => {
+    const { findCurrentBook, currentUser } = this.props
+    if (currentUser.wish_books.length > 0) {
+      return currentUser.wish_books.find(wish_book => {
+        return wish_book.book_id === findCurrentBook().id
+      })
+    }
+  }
 
+  showButtons = () => {
+    if (this.checkIfUserHasRead()) {
+      return <div>You read this book!</div>
+    } else if (this.checkIfUserWishlist()) {
+      return <div>You added this book to your wishlist!</div>
+    } else {
+      return <div>
+      <button onClick={this.addToUserBooks}>
+      I read this book
+      </button>
+      <button onClick={this.addToWishBooks} className='wantToRead'>
+      I want to read this book
+      </button>
+      </div>
+      }
+    }
 
 
   render () {
@@ -195,12 +251,11 @@ class BookShow extends Component {
             Date published: <br/>{findCurrentBook().date_published}<br/><br/>
             Page count: <br/>{findCurrentBook().page_count}
           </div>
+
+
           <div className='commentsSection'>
-          {this.checkIfUserHasRead() ? <div>You read this book!</div> :
-          <button onClick={this.addToUserBooks}>
-            I read this book
-          </button>
-          }
+          {this.showButtons()}
+
           <br/>
             Leave a comment:
           <input
