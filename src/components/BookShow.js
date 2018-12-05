@@ -131,10 +131,51 @@ class BookShow extends Component {
     })
   }
 
+  addToUserBooks = () => {
+    const { findCurrentBook, currentUser, setCurrentUser } = this.props
+
+    //optimistically render
+    const addedBookToArray = currentUser.user_books.concat({
+      book_id: findCurrentBook().id,
+      user_id: currentUser.id
+    })
+    currentUser.user_books = addedBookToArray
+
+    setCurrentUser(currentUser)
+
+    //patch to db
+    // debugger
+    fetch(`http://localhost:4000/api/v1/user_books`, {
+      method: 'POST',
+      body: JSON.stringify({
+        user_id: currentUser.id,
+        book_id: findCurrentBook().id
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(json => {
+      console.log(json)
+    })
+  }
+
+  checkIfUserHasRead = () => {
+    const { findCurrentBook, currentUser } = this.props
+    if (currentUser.user_books.length > 0) {
+      return currentUser.user_books.find(user_book => {
+        return user_book.book_id === findCurrentBook().id
+      })
+    }
+  }
+
 
   render () {
     const { findCurrentBook } = this.props
-  
+
     return (
       <div>
         <div className='trees'>
@@ -153,9 +194,11 @@ class BookShow extends Component {
             Page count: <br/>{findCurrentBook().page_count}
           </div>
           <div className='commentsSection'>
-          <button>
+          {this.checkIfUserHasRead() ? <div>You read this book!</div> :
+          <button onClick={this.addToUserBooks}>
             I read this book
           </button>
+          }
           <br/>
             Leave a comment:
           <input

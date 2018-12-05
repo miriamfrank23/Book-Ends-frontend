@@ -8,9 +8,13 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
 
     return (
       <div className='navBar'>
+
       <div id='logo'>
-        <i className='fas fa-book-open'></i>
-        Book Ends
+        <img alt='' src='http://animalcare.umich.edu/sites/default/files/acu-cont-ed-icon_0.png'
+        id='logoBook'/>
+        <div>
+          Book Ends
+        </div>
       </div>
         {currentBookId ?
             <button id='navBarButton'

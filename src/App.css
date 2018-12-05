@@ -1,12 +1,18 @@
 #logo {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
-  padding-bottom: 80px;
-  padding-left: 10px;
+  display: flex;
+  margin-bottom: 90px;
 }
 
 #logo:hover {
   color: white;
+}
+
+#logoBook {
+  height: 75px;
+  margin-right: 10px;
+  margin-left: 20px;
 }
 
 .fa-book-open {
@@ -54,17 +60,16 @@
   background: white;
   height: 150px;
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .bookShow {
   border-radius: 2px;
-  margin-top: 30px;
-  /* margin-bottom: 30px; */
-  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
-  /* align-items: center; */
-  /* background: lightpink; */
+  align-items: center;
+  height: 600px;
 }
 
 .bookDetails {
@@ -86,11 +91,10 @@
 }
 
 .userProfile {
-  border-radius: 2px;
   margin: 50px;
   padding: 20px;
+  height: 600px;
   background: white;
-  opacity: .80;
 }
 
 .showImage {
@@ -117,7 +121,7 @@ input {
 
 button {
   border-radius: 2px;
-  margin: 10px;
+  margin: 15px;
   width: 200px;
   height: 30px;
   font-weight: bold;
@@ -198,6 +202,30 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
 }
 
+.userShowBook:hover {
+  box-shadow: 3px 3px 3px 3px #8f97a1;
+}
+
+.userShowBook {
+  border-radius: 2px;
+  width: 160px;
+  height: 240px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-bottom: 10px;
+}
+
+.userShowBookContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+.outerUserBooksContainer {
+  display: flex;
+}
+
 #profileButtons {
   display: flex;
   padding-right: 25px;
@@ -205,7 +233,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #userProfileButton {
-  margin-top: 75px;
+  margin-top: 100px;
 }
 
 .centerButton {
@@ -236,13 +264,14 @@ h1, h2, h3, h4, h5, h6 {
 .trees {
   margin-top: 30px;
   width: 100%;
-  height: 200px;
+  height: 260px;
   background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
   url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg');
 }
 
 .checked, .half-o, .fa{
   color: #1F3044;
+  margin-top: 10px;
 }
 
 .loginButtons {
@@ -251,4 +280,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .loginButtons:hover {
   color: #8f97a1;
+}
+
+.profileWelcomeHeader {
+  padding-bottom: 40px;
 }

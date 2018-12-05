@@ -41,6 +41,7 @@ class LoginPage extends Component {
     .then(parsed => {
       // debugger
       if (parsed.user) {
+        debugger
         window.localStorage.setItem('jwt', parsed.jwt)
         console.log(window.localStorage)
         this.props.setCurrentUser(parsed.user)
@@ -64,7 +65,7 @@ class LoginPage extends Component {
     })
     .then(response => {
       if (!response.ok) {
-          window.alert('Invalid username or password')
+          // window.alert('Invalid username or password')
        } else {
          return response.json()
        }

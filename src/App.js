@@ -77,7 +77,7 @@ class App extends Component {
       })
       .then(resp => resp.json())
       .then(data => {
-        if (data.user.first_name)
+        if (data.user)
         this.setState({
           currentUser: data.user
         })
@@ -291,6 +291,7 @@ class App extends Component {
       return <BookShow
       findCurrentBook={this.findCurrentBook}
       currentUser={this.state.currentUser}
+      setCurrentUser={this.setCurrentUser}
       />
     }
   }
@@ -302,13 +303,15 @@ class App extends Component {
         <LoginPage setCurrentUser={this.setCurrentUser}
         resetCurrentUser={this.resetCurrentUser}/>
       )
-    } else if (this.state.currentUser && this.state.showingUserProfile) {
+    } else if (this.state.currentUser && this.state.showingUserProfile && !this.state.currentBookId) {
       return (
         <UserProfile currentUser={this.state.currentUser}
-        backToIndex={this.backToIndex}/>
+        backToIndex={this.backToIndex}
+        fetchedBooks={this.state.fetchedBooks}
+        setCurrentBook={this.setCurrentBook}
+        />
       )
     } else if(this.state.currentUser && !this.state.currentBookId) {
-      // debugger
       return(
       <div>
       <NavBar
