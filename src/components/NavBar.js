@@ -10,7 +10,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
 
     if (currentBookId) {
       return <div className='navBar'>
-      <div id='logo'>
+      <div id='logo' onClick={noBookSelected}>
         <div>
           Book
         </div>
@@ -38,7 +38,7 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
       </div>
     } else if (showingUserProfile) {
       return <div className='navBar'>
-      <div id='logo'>
+      <div id='logo' onClick={backToIndex}>
         <div>
           Book
         </div>

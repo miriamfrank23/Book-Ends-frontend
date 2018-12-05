@@ -17,16 +17,22 @@
   margin-top: 5px;
 }
 
-.fa-book-open {
+
+/* .fa-book-open {
   color: lightpink;
   font-size: 28px;
   padding: 20px;
-}
+} */
 
 .booksBody {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
+}
+
+.playwithme {
+  background-color: green;
+  height: 1em;
 }
 
 .pageButtons {
@@ -188,6 +194,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  overflow: hidden;
 }
 
 #loginForm {
@@ -257,12 +264,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .loginImage {
-  height: 1500px;
+  height: 1400px;
   width: 100%;
   background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
   url('https://images.pexels.com/photos/753575/pexels-photo-753575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')no-repeat;
   background-size: 100% 100%;
-
 }
 
 .trees {
