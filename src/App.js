@@ -230,8 +230,7 @@ class App extends Component {
       setCurrentBook={this.setCurrentBook}
       fetchedBooks={this.filterThroughBooks()}
       searchInput={this.state.searchInput}
-      captureInput={this.captureInput}
-      searchInput={this.state.searchInput}/>
+      captureInput={this.captureInput}/>
     } else {
       return <BooksBody
       setCurrentBook={this.setCurrentBook}

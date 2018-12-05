@@ -1,5 +1,4 @@
 import React from 'react'
-import Books from '../images/books.svg'
 
 
 const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook }) => {
