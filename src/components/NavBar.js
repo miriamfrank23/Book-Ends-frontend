@@ -9,10 +9,13 @@ const NavBar = ({ captureInput, currentBookId, noBookSelected, searchInput, curr
       <div className='navBar'>
 
       <div id='logo'>
+        <div>
+          Book
+        </div>
         <img alt='' src='http://animalcare.umich.edu/sites/default/files/acu-cont-ed-icon_0.png'
         id='logoBook'/>
         <div>
-          Book Ends
+         Ends
         </div>
       </div>
         {currentBookId ?

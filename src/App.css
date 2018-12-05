@@ -3,6 +3,7 @@
   font-weight: bold;
   display: flex;
   margin-bottom: 90px;
+  margin-left: 10px;
 }
 
 #logo:hover {
@@ -11,8 +12,8 @@
 
 #logoBook {
   height: 75px;
-  margin-right: 10px;
-  margin-left: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .fa-book-open {
