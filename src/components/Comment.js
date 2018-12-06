@@ -58,7 +58,7 @@ class Comment extends Component {
 
   renderComment = () => {
     if (this.state.users.length > 0) {
-      return <div className='comment'> {this.findUser().first_name}: {this.props.comment.text}
+      return <div className='comment'> <span className='userCommentName'>{this.findUser().first_name}</span>: {this.props.comment.text}
       {this.props.comment.user_id === this.props.currentUser.id ? <div><button onClick={() => this.props.editComment(this.props.comment)}>Edit</button><button onClick={() => this.deleteComment(this.props.comment)}>Delete</button></div> : null}
       </div>
     } else {

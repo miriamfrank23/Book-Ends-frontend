@@ -171,10 +171,10 @@ select {
   border-radius: 2px;
   border: solid 1px;
   border-color: #8f97a1;
-  margin: 5px;
-  padding: 5px;
+  margin: 10px;
+  padding: 10px;
   width: 500px;
-  /* font-style: italic; */
+  font-style: italic;
 }
 /*
 .bookDetails {
@@ -323,4 +323,9 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.userCommentName {
+  font-weight: bold;
+  /* font-style: normal; */
 }
