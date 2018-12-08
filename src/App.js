@@ -59,7 +59,9 @@ class App extends Component {
 
   logOut = () => {
     this.setState({
-      currentUser: null
+      currentUser: null,
+      searchInput: ''
+
     }, () => {
       window.localStorage.removeItem('jwt')
       console.log(window.localStorage)
