@@ -1,16 +1,28 @@
-
-.App {
-}
-
 #logo {
-  padding-bottom: 70px;
-  padding-left: 20px;
-  font-size: 40px;
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 90px;
+  margin-left: 30px;
 }
 
 #logo:hover {
   color: white;
 }
+
+#logoBook {
+  height: 50px;
+  margin-right: 6px;
+  margin-left: 6px;
+  margin-top: 5px;
+}
+
+
+/* .fa-book-open {
+  color: lightpink;
+  font-size: 28px;
+  padding: 20px;
+} */
 
 .booksBody {
   justify-content: center;
@@ -18,11 +30,14 @@
   flex-wrap: wrap;
 }
 
-.pageBody {
-  margin: 20px;
-  justify-content: center;
+.playwithme {
+  background-color: green;
+  height: 1em;
+}
+
+.pageButtons {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .bookCard {
@@ -32,17 +47,16 @@
   margin: 10px;
   padding: 10px;
   border-radius: 2px;
-  color: white;
-  font-style: italic;
+  color: #1F3044;
 }
 
 .bookThumbnail:hover {
-  opacity: .8;
+  box-shadow: 3px 3px 3px 3px #8f97a1;
 }
 
 .bookThumbnail {
   border-radius: 2px;
-  width: 180px;
+  width: 160px;
   height: 240px;
 }
 
@@ -53,73 +67,99 @@
   align-items: center;
   background: white;
   height: 150px;
-  /* opacity: .80; */
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
 
 .bookShow {
   border-radius: 2px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: auto;
+}
+
+.bookDetails {
+  /* margin: 30px; */
+  /* width: 1000px; */
+  word-wrap: normal;
+}
+
+.showImageContainer {
+  /* width: 400px; */
+  margin: 25px;
+}
+
+.commentsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+
+.file {
   margin: 50px;
   padding: 20px;
-  /* display: flex; */
-  /* justify-content: space-around;    */
+  height: auto;
   background: white;
-  opacity: .80;
 }
 
 .showImage {
   border-radius: 2px;
-  width: 180px;
-  height: 240px;
+  width: 260px;
+  height: 390px;
   margin: 20px;
 }
 
 .showImage:hover {
-  transform: scale(1.5);
+  /* transform: scale(1.5); */
 }
 
 input {
+  font-family: 'Roboto Mono', monospace;
   border-radius: 2px;
-  width: 400px;
-  height: 25px;
+  width: 500px;
+  height: 40px;
   margin: 10px;
-  /* background-color: #e1e8f0; */
   background-color: white;
-  /* font-family: 'Didact Gothic', sans-serif;   */
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-}
-
-#navBarButton {
-  border-radius: 2px;
-  margin-top: 30px;
-  margin-left: 30px;
-  height: 30px;
-  width: 200px;
+  font-size: 20px;
+  color: #1F3044;
+  font-weight: bold;
 }
 
 button {
   border-radius: 2px;
-  margin: 20px;
+  margin: 10px;
   width: 200px;
   height: 30px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 18px;
+  font-family: 'Roboto Mono', monospace;
+  color: #1F3044;
+  word-wrap: normal;
 }
 
-.profileIcon {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+button:hover {
+  color: #8f97a1;
 }
 
-.profileIcon:hover {
-  color: white;
+select {
+  margin-top: 30px;
+  margin-left: 30px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto Mono', monospace;
+  color: #1F3044;
 }
 
-.profileImage {
-  height: 100px;
+#navBarButton {
+  border-radius: 2px;
+  margin: 40px;
+  height: 30px;
+  width: 200px;
 }
 
 .commentContainer {
@@ -130,20 +170,163 @@ button {
 .comment {
   border-radius: 2px;
   border: solid 1px;
-  margin: 5px;
-  padding: 5px;
+  border-color: #8f97a1;
+  margin: 10px;
+  padding: 10px;
   width: 500px;
   font-style: italic;
 }
-
+/*
 .bookDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Roboto Mono', monospace;
+ /* line-height: 1em; */
+}
+
+
+#formsContainer {
+  color: #1F3044;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+#loginForm {
+  margin-right: 120px;
+  margin-left: 120px;
+  margin-bottom: 300px;
+}
+
+#signupForm {
+  margin-right: 120px;
+  margin-bottom: 300px;
+}
+
+.profileIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.userShowBook:hover {
+  box-shadow: 3px 3px 3px 3px #8f97a1;
+}
+
+.userShowBook {
+  border-radius: 2px;
+  width: 160px;
+  height: 240px;
+  margin-bottom: 10px;
+}
+
+.userShowBookContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 15px;
+}
+
+.outerUserBooksContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#profileButtons {
+  display: flex;
+  padding-right: 25px;
+  /* padding-left: 100px; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.centerButton {
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+
+#mysteryImage {
+  height: 600px;
+  background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
+   url('https://wetshutter.com/wp-content/uploads/2018/05/1569-_MG_1268-Pano.jpg') no-repeat;
+  /* width: 100%; */
+  background-size: 100% 100%;
+  margin-top: 30px;
+  /* background-attachment: fixed; */
+}
+
+.loginImage {
+  height: 1400px;
+  width: 100%;
+  background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
+  url('https://images.pexels.com/photos/753575/pexels-photo-753575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')no-repeat;
+  background-size: 100% 100%;
+}
+
+.trees {
+  margin-top: 30px;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(rgba(31,48,68,0.3),rgba(31,48,68,0.3)),
+  url('https://robertrodriguezjr.com/wp-content/uploads/2018/11/B060247-1.jpg');
+}
+
+.checked, .half-o, .fa{
+  color: #1F3044;
+  margin-top: 10px;
+}
+
+.loginButtons {
+  font-weight: bold;
+}
+
+.loginButtons:hover {
+  color: #8f97a1;
+}
+
+.profileWelcomeHeader {
+  padding-bottom: 40px;
+}
+
+.wantToRead {
+  width: 300px;
+}
+
+.readButtonsContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
- /* font-family: 'Fjalla One', serif; */
- font-family: 'Montserrat', sans-serif;
- font-weight: bold;
+.userProfilePage {
+  padding-top: 20px;
+  padding-botton: 5px;
+}
+
+.userProfile {
+  margin: 20px
+}
+
+#searchBar {
+  margin-bottom: 15px;
+  /* font-weight: normal; */
+}
+
+.pageBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userCommentName {
+  font-weight: bold;
+  /* font-style: normal; */
 }

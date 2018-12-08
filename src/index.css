@@ -3,21 +3,14 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  /* font-weight: 500; */
-  /* background:#88B7B5; */
+  font-family: 'Roboto Mono', monospace;
+  color: #1F3044;
+  font-size: 19px;
   background: white;
-  background-image: url('https://c1.staticflickr.com/6/5524/30628679132_ca19d26013_b.jpg');
   -moz-background-size: 100%;
    -o-background-size: 100%;
    -webkit-background-size: 100%;
    background-size: 100%;
    background-repeat: no-repeat;
    background-attachment: fixed;
-}
-
-
-#stretch {
-
 }
