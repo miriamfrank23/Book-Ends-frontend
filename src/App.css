@@ -126,7 +126,7 @@ input {
   background-color: white;
   font-size: 20px;
   color: #1F3044;
-  /* margin-right: 500px; */
+  font-weight: bold;
 }
 
 button {
@@ -198,13 +198,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #loginForm {
-  margin-right: 150px;
-  margin-left: 150px;
+  margin-right: 120px;
+  margin-left: 120px;
   margin-bottom: 300px;
 }
 
 #signupForm {
-  margin-right: 150px;
+  margin-right: 120px;
   margin-bottom: 300px;
 }
 
@@ -312,11 +312,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .userProfile {
-  margin: 20px;
+  margin: 20px
 }
 
 #searchBar {
   margin-bottom: 15px;
+  /* font-weight: normal; */
 }
 
 .pageBody {
