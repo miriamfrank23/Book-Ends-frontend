@@ -333,6 +333,7 @@ class App extends Component {
             backToIndex={this.backToIndex}
             fetchedBooks={this.state.fetchedBooks}
             setCurrentBook={this.setCurrentBook}
+            setCurrentUser={this.setCurrentUser}
           />
         </div>
       )

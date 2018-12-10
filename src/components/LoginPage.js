@@ -41,7 +41,7 @@ class LoginPage extends Component {
     .then(parsed => {
       // debugger
       if (parsed.user) {
-        debugger
+        // debugger
         window.localStorage.setItem('jwt', parsed.jwt)
         console.log(window.localStorage)
         this.props.setCurrentUser(parsed.user)

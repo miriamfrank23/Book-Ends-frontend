@@ -1,18 +1,71 @@
 import React from 'react'
+const axios = require('axios')
 
 
-const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook }) => {
+
+const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, setCurrentUser }) => {
 
 
-  // const showUserComments = () => {
-  //   if (currentUser.comments.length > 0) {
-  //     return currentUser.comments.map(comment => {
-  //       return <div key={comment.id}>{comment.text}</div>
-  //     })
-  //   } else {
-  //     return "You haven't commented on any books yet"
-  //   }
-  // }
+
+  const deleteUserBook = (event, book) => {
+    console.log(event.target.className)
+    console.log(book)
+    // debugger
+
+    if (event.target.className === 'deleteUserBookButton') {
+      //optimistically render
+
+      const findUserBookId = currentUser.user_books.find(eachBook => {
+            return eachBook.book_id === book.id
+        })
+
+      const newUserBooks = currentUser.user_books.filter(eachBook => {
+            return eachBook.book_id !== book.id
+          })
+
+      currentUser.user_books = newUserBooks
+
+      //reset state
+      setCurrentUser(currentUser)
+
+      axios.delete(
+      `http://localhost:4000/api/v1/user_books/${findUserBookId.id}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
+          })
+        .then(resp => {
+            console.log(resp);
+        }
+      )
+    } else if (event.target.className === 'deleteWishBookButton') {
+
+      const findWishBookId = currentUser.wish_books.find(eachBook => {
+            return eachBook.book_id === book.id
+        })
+
+      const newWishBooks = currentUser.wish_books.filter(eachBook => {
+            return eachBook.book_id !== book.id
+          })
+
+      currentUser.wish_books = newWishBooks
+
+      //reset state
+      setCurrentUser(currentUser)
+
+      axios.delete(
+      `http://localhost:4000/api/v1/wish_books/${findWishBookId.id}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
+          })
+        .then(resp => {
+            console.log(resp);
+        }
+      )
+    }
+
+  }
 
   const showUserBooks = () => {
     if (currentUser.user_books.length > 0) {
@@ -27,6 +80,9 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook })
         return <div key={book.id} className='userShowBookContainer'>
           <img alt='' src={book.thumbnail} className='userShowBook' onClick={() => goToBookShow(book.id)}/>
           {book.title}
+          <button className='deleteUserBookButton' onClick={(e) => deleteUserBook(e, book)}>
+          Remove
+          </button>
         </div>
       })
 
@@ -48,6 +104,9 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook })
         return <div key={book.id} className='userShowBookContainer'>
           <img alt='' src={book.thumbnail} className='userShowBook' onClick={() => goToBookShow(book.id)}/>
           {book.title}
+          <button className='deleteWishBookButton' onClick={(e) => deleteUserBook(e, book)}>
+          Remove
+          </button>
         </div>
       })
 
