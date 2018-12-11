@@ -8,8 +8,8 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, s
 
 
   const deleteUserBook = (event, book) => {
-    console.log(event.target.className)
-    console.log(book)
+    // console.log(event.target.className)
+    // console.log(book)
     // debugger
 
     if (event.target.className === 'deleteUserBookButton') {
@@ -66,6 +66,10 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, s
     }
 
   }
+
+  // const switchToRead = (e, book) => {
+  //   debugger
+  // }
 
   const showUserBooks = () => {
     if (currentUser.user_books.length > 0) {
