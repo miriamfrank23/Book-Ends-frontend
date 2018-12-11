@@ -23,7 +23,7 @@ class LoginPage extends Component {
   createNewUser = (e) => {
     // debugger
     e.preventDefault()
-    fetch(`http://localhost:4000/api/v1/users`, {
+    fetch(`http://book-ends.herokuapp.com/users`, {
       method: 'POST',
       body: JSON.stringify({
         user: {
@@ -51,7 +51,7 @@ class LoginPage extends Component {
 
   logUserIn = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:4000/api/v1/login`, {
+    fetch(`http://book-ends.herokuapp.com/login`, {
       method: 'POST',
       body: JSON.stringify({
         user: {
