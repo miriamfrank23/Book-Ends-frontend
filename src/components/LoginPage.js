@@ -16,14 +16,14 @@ class LoginPage extends Component {
     this.setState({
       [e.target.name]: e.target.value
     }, () => {
-      console.log(this.state)
+      // // console.log(this.state)
     })
   }
 
   createNewUser = (e) => {
     // debugger
     e.preventDefault()
-    fetch(`https://book-ends.herokuapp.com/users`, {
+    fetch(`http://localhost:3001/users`, {
       method: 'POST',
       body: JSON.stringify({
         user: {
@@ -43,7 +43,7 @@ class LoginPage extends Component {
       if (parsed.user) {
         // debugger
         window.localStorage.setItem('jwt', parsed.jwt)
-        console.log(window.localStorage)
+        // // console.log(window.localStorage)
         this.props.setCurrentUser(parsed.user)
       }
     })
@@ -51,7 +51,7 @@ class LoginPage extends Component {
 
   logUserIn = (e) => {
     e.preventDefault()
-    fetch(`https://book-ends.herokuapp.com/login`, {
+    fetch(`http://localhost:3001/login`, {
       method: 'POST',
       body: JSON.stringify({
         user: {
@@ -73,12 +73,12 @@ class LoginPage extends Component {
     .then(parsed => {
       if (parsed.user) {
         window.localStorage.setItem('jwt', parsed.jwt)
-        console.log(window.localStorage)
+        // // console.log(window.localStorage)
         this.props.setCurrentUser(parsed.user)
       }
     })
     .catch(error => {
-      console.log(error)
+      // // console.log(error)
     })
   }
 

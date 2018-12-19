@@ -31,13 +31,13 @@ class BookShow extends Component {
       comment: comment.text,
       commentEditing: comment
     }, () => {
-      console.log(this.state.comment, this.state.commentEditing)
+      // console.log(this.state.comment, this.state.commentEditing)
     })
   }
 
   showComments = () => {
     const { findCurrentBook } = this.props
-    fetch(`https://book-ends.herokuapp.com/comments`, {
+    fetch(`http://localhost:3001/comments`, {
         method: 'GET',
         headers: {
            Authorization: `Bearer ${localStorage.getItem('jwt')}`
@@ -59,7 +59,7 @@ class BookShow extends Component {
     this.setState({
       comment: e.target.value
     }, () => {
-      console.log(this.state)
+      // console.log(this.state)
     })
   }
 
@@ -74,8 +74,8 @@ class BookShow extends Component {
         text: this.state.comment
       }
       //send new comment to db
-      console.log('creating comment')
-      fetch(`https://book-ends.herokuapp.com/comments`, {
+      // console.log('creating comment')
+      fetch(`http://localhost:3001/comments`, {
         method: 'POST',
         body: JSON.stringify(newComment),
         headers: {
@@ -94,8 +94,8 @@ class BookShow extends Component {
       })
     } else {
       //editing comment
-      console.log('editing comment')
-      fetch(`https://book-ends.herokuapp.com/comments/${this.state.commentEditing.id}`, {
+      // console.log('editing comment')
+      fetch(`http://localhost:3001/comments/${this.state.commentEditing.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           text: this.state.comment
@@ -134,18 +134,8 @@ class BookShow extends Component {
   addToUserBooks = () => {
     const { findCurrentBook, currentUser, setCurrentUser } = this.props
 
-    //optimistically render
-    const addedBookToArray = currentUser.user_books.concat({
-      book_id: findCurrentBook().id,
-      user_id: currentUser.id
-    })
-    currentUser.user_books = addedBookToArray
-
-    setCurrentUser(currentUser)
-
-    //patch to db
-    // debugger
-    fetch(`https://book-ends.herokuapp.com/user_books`, {
+    //post to db
+    fetch(`http://localhost:3001/user_books`, {
       method: 'POST',
       body: JSON.stringify({
         user_id: currentUser.id,
@@ -159,25 +149,24 @@ class BookShow extends Component {
     })
     .then(resp => resp.json())
     .then(json => {
-      console.log(json)
+      // console.log('added new user book to db')
+      //pesimistically render
+      const addedBookToArray = currentUser.user_books.concat({
+        book_id: findCurrentBook().id,
+        user_id: currentUser.id,
+        id: json.id
+      })
+      currentUser.user_books = addedBookToArray
+
+      setCurrentUser(currentUser)
     })
   }
 
   addToWishBooks = () => {
     const { findCurrentBook, currentUser, setCurrentUser } = this.props
 
-    //optimistically render
-    const addedBookToArray = currentUser.wish_books.concat({
-      book_id: findCurrentBook().id,
-      user_id: currentUser.id
-    })
-    currentUser.wish_books = addedBookToArray
-
-    setCurrentUser(currentUser)
-
-    //patch to db
-    // debugger
-    fetch(`https://book-ends.herokuapp.com/wish_books`, {
+    //post to db
+    fetch(`http://localhost:3001/wish_books`, {
       method: 'POST',
       body: JSON.stringify({
         user_id: currentUser.id,
@@ -191,7 +180,16 @@ class BookShow extends Component {
     })
     .then(resp => resp.json())
     .then(json => {
-      console.log(json)
+      // console.log('added new wish book to db')
+      //pesimistically render
+      const addedBookToArray = currentUser.wish_books.concat({
+        book_id: findCurrentBook().id,
+        user_id: currentUser.id,
+        id: json.id
+      })
+      currentUser.wish_books = addedBookToArray
+
+      setCurrentUser(currentUser)
     })
   }
 

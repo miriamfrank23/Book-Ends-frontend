@@ -33,8 +33,8 @@ class App extends Component {
   }
 
   fetchBooks = () => {
-    console.log('start fetching books')
-    axios.get('https://book-ends.herokuapp.com/books', {
+    // console.log('start fetching books')
+    axios.get('http://localhost:3001/books', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
@@ -43,9 +43,9 @@ class App extends Component {
       this.setState({
         fetchedBooks: resp.data
       }, () => {
-        console.log('end fetching books')
+        // console.log('end fetching books')
         this.defaultSort()
-        console.log('sorted')
+        // console.log('sorted')
       })
     })
   }
@@ -54,6 +54,8 @@ class App extends Component {
   setCurrentUser = (user) => {
       this.setState({
         currentUser: user
+      }, () => {
+        // console.log('current user updated!')
       })
   }
 
@@ -64,15 +66,15 @@ class App extends Component {
 
     }, () => {
       window.localStorage.removeItem('jwt')
-      console.log(window.localStorage)
+      // console.log(window.localStorage)
     })
   }
 
 
   resetCurrentUser = () => {
-    console.log(localStorage.getItem('jwt'))
+    // // console.log(localStorage.getItem('jwt'))
     if (localStorage.getItem('jwt')) {
-      fetch('https://book-ends.herokuapp.com/profile', {
+      fetch('http://localhost:3001/profile', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwt')}`
@@ -182,7 +184,7 @@ class App extends Component {
     this.setState({
       currentBookId: id
     }, () => {
-      console.log(this.state.currentBookId)
+      // console.log(this.state.currentBookId)
     })
   }
 
@@ -190,7 +192,7 @@ class App extends Component {
     this.setState({
       currentBookId: null
     }, () => {
-      console.log(this.state.currentBookId)
+      // // console.log(this.state.currentBookId)
     })
   }
 
@@ -198,7 +200,7 @@ class App extends Component {
     this.setState({
       searchInput: input
     }, () => {
-      console.log(this.state.searchInput)
+      // console.log(this.state.searchInput)
     })
   }
 
@@ -210,7 +212,7 @@ class App extends Component {
 
 
   filterThroughBooks = () => {
-    // console.log(this.state.fetchedBooks);
+    // // console.log(this.state.fetchedBooks);
     return this.state.fetchedBooks.filter(book => {
       return (
         book.title.toLowerCase().includes(this.state.searchInput.toLowerCase())

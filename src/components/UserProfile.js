@@ -5,62 +5,62 @@ const axios = require('axios')
 
 const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, setCurrentUser }) => {
 
+  const findUserBookId = (book) => {
+    return currentUser.user_books.find(eachBook => {
+      return eachBook.book_id === book.id
+    })
+  }
 
+  const findWishBookId = (book) => {
+    return currentUser.wish_books.find(eachBook => {
+      return eachBook.book_id === book.id
+    })
+  }
 
   const deleteUserBook = (event, book) => {
-    // console.log(event.target.className)
-    // console.log(book)
-    // debugger
 
     if (event.target.className === 'deleteUserBookButton') {
-      //optimistically render
 
-      const findUserBookId = currentUser.user_books.find(eachBook => {
-            return eachBook.book_id === book.id
+      // delete from db
+      axios.delete(
+        `http://localhost:3001/user_books/${findUserBookId(book).id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`
+          }
         })
-
-      const newUserBooks = currentUser.user_books.filter(eachBook => {
+        .then(resp => {
+          // console.log('user book deleted from db')
+          //pesimistically render
+          const newUserBooks = currentUser.user_books.filter(eachBook => {
             return eachBook.book_id !== book.id
           })
+          currentUser.user_books = newUserBooks
 
-      currentUser.user_books = newUserBooks
-
-      //reset state
-      setCurrentUser(currentUser)
-
-      axios.delete(
-      `https://book-ends.herokuapp.com/user_books/${findUserBookId.id}`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`
-            }
-          })
-        .then(resp => {
-            console.log(resp);
+          //reset state
+          setCurrentUser(currentUser)
         }
       )
+
+
     } else if (event.target.className === 'deleteWishBookButton') {
 
-      const findWishBookId = currentUser.wish_books.find(eachBook => {
-            return eachBook.book_id === book.id
-        })
-
-      const newWishBooks = currentUser.wish_books.filter(eachBook => {
-            return eachBook.book_id !== book.id
-          })
-
-      currentUser.wish_books = newWishBooks
-
-      //reset state
-      setCurrentUser(currentUser)
-
+      //delete from db
       axios.delete(
-      `https://book-ends.herokuapp.com/wish_books/${findWishBookId.id}`, {
+      `http://localhost:3001/wish_books/${findWishBookId().id}`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}`
             }
           })
         .then(resp => {
-            console.log(resp);
+          // console.log('wish book deleted from db')
+          //pesimistically render
+          const newWishBooks = currentUser.wish_books.filter(eachBook => {
+            return eachBook.book_id !== book.id
+          })
+          currentUser.wish_books = newWishBooks
+
+          //reset state
+          setCurrentUser(currentUser)
         }
       )
     }
@@ -84,7 +84,9 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, s
         return <div key={book.id} className='userShowBookContainer'>
           <img alt='' src={book.thumbnail} className='userShowBook' onClick={() => goToBookShow(book.id)}/>
           {book.title}
-          <button className='deleteUserBookButton' onClick={(e) => deleteUserBook(e, book)}>
+          <button className='deleteUserBookButton' onClick={(e) =>
+            deleteUserBook(e, book)
+          }>
           Remove
           </button>
         </div>

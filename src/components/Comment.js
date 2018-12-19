@@ -16,18 +16,18 @@ class Comment extends Component {
   }
 
   fetchUsers = () => {
-    console.log('start fetching users')
-    axios.get('https://book-ends.herokuapp.com/users', {
+    // console.log('start fetching users')
+    axios.get('http://localhost:3001/users', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(resp => {
-      console.log('before setting users');
+      // console.log('before setting users');
       this.setState({
         users: resp.data
       }, () => {
-        console.log(this.state.users);
+        // console.log(this.state.users);
       })
     })
   }
@@ -38,13 +38,13 @@ class Comment extends Component {
     this.props.deleteComments(comment)
 
     axios.delete(
-      `https://book-ends.herokuapp.com/comments/${comment.id}`, {
+      `http://localhost:3001/comments/${comment.id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(resp => {
-      console.log(resp);
+      // console.log(resp);
     })
   }
 
