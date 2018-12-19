@@ -34,7 +34,7 @@ class App extends Component {
 
   fetchBooks = () => {
     // console.log('start fetching books')
-    axios.get('http://localhost:3001/books', {
+    axios.get('https://book-ends.herokuapp.com/books', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
@@ -74,7 +74,7 @@ class App extends Component {
   resetCurrentUser = () => {
     // // console.log(localStorage.getItem('jwt'))
     if (localStorage.getItem('jwt')) {
-      fetch('http://localhost:3001/profile', {
+      fetch('https://book-ends.herokuapp.com/profile', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwt')}`

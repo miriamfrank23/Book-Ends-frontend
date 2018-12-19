@@ -37,7 +37,7 @@ class BookShow extends Component {
 
   showComments = () => {
     const { findCurrentBook } = this.props
-    fetch(`http://localhost:3001/comments`, {
+    fetch(`https://book-ends.herokuapp.com/comments`, {
         method: 'GET',
         headers: {
            Authorization: `Bearer ${localStorage.getItem('jwt')}`
@@ -75,7 +75,7 @@ class BookShow extends Component {
       }
       //send new comment to db
       // console.log('creating comment')
-      fetch(`http://localhost:3001/comments`, {
+      fetch(`https://book-ends.herokuapp.com/comments`, {
         method: 'POST',
         body: JSON.stringify(newComment),
         headers: {
@@ -95,7 +95,7 @@ class BookShow extends Component {
     } else {
       //editing comment
       // console.log('editing comment')
-      fetch(`http://localhost:3001/comments/${this.state.commentEditing.id}`, {
+      fetch(`https://book-ends.herokuapp.com/comments/${this.state.commentEditing.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           text: this.state.comment
@@ -135,7 +135,7 @@ class BookShow extends Component {
     const { findCurrentBook, currentUser, setCurrentUser } = this.props
 
     //post to db
-    fetch(`http://localhost:3001/user_books`, {
+    fetch(`https://book-ends.herokuapp.com/user_books`, {
       method: 'POST',
       body: JSON.stringify({
         user_id: currentUser.id,
@@ -166,7 +166,7 @@ class BookShow extends Component {
     const { findCurrentBook, currentUser, setCurrentUser } = this.props
 
     //post to db
-    fetch(`http://localhost:3001/wish_books`, {
+    fetch(`https://book-ends.herokuapp.com/wish_books`, {
       method: 'POST',
       body: JSON.stringify({
         user_id: currentUser.id,

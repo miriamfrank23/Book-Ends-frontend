@@ -17,7 +17,7 @@ class Comment extends Component {
 
   fetchUsers = () => {
     // console.log('start fetching users')
-    axios.get('http://localhost:3001/users', {
+    axios.get('https://book-ends.herokuapp.com/users', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
@@ -38,7 +38,7 @@ class Comment extends Component {
     this.props.deleteComments(comment)
 
     axios.delete(
-      `http://localhost:3001/comments/${comment.id}`, {
+      `https://book-ends.herokuapp.com/comments/${comment.id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }

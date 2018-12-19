@@ -23,7 +23,7 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, s
 
       // delete from db
       axios.delete(
-        `http://localhost:3001/user_books/${findUserBookId(book).id}`, {
+        `https://book-ends.herokuapp.com/user_books/${findUserBookId(book).id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}`
           }
@@ -46,7 +46,7 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, s
 
       //delete from db
       axios.delete(
-      `http://localhost:3001/wish_books/${findWishBookId().id}`, {
+      `https://book-ends.herokuapp.com/wish_books/${findWishBookId().id}`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}`
             }
