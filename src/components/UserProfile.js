@@ -46,7 +46,7 @@ const UserProfile = ({ currentUser, backToIndex, fetchedBooks, setCurrentBook, s
 
       //delete from db
       axios.delete(
-      `https://book-ends.herokuapp.com/wish_books/${findWishBookId().id}`, {
+      `https://book-ends.herokuapp.com/wish_books/${findWishBookId(book).id}`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('jwt')}`
             }
